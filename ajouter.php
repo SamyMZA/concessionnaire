@@ -1,7 +1,7 @@
 <?php
 // Connexion à la base de données
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=concessionaire;charset=utf8', 'root', 'mysql');
+    $bdd = new PDO('mysql:host=localhost;dbname=concessionnaire;charset=utf8', 'root', 'mysql');
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }

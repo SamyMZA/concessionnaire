@@ -3,62 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <title>Concessionnaire</title>
+        <link rel="stylesheet" href="./style.css">
     </head>
-
-    <style>
-
-        h1{
-            text-align: center;
-            font-size: 50px;
-            margin: 40px 0px;
-            color: white;
-        }
-
-        *{
-            margin: 0px;
-            padding: 0px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body{
-            background-color: #6f8fa8ff;
-        }
-
-        #annonces{
-            background-color: #9AC8EB;
-            display: flex;
-        }
-
-        
-        .voiture{
-            background-color: #386486ff;
-            color: white;
-            border-radius: 5%;
-            height: 350px;
-            width: 350px;
-            /* padding: 50px; */
-            margin: 50px;
-            
-            
-        }
-        .voiture h2{
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        p{
-            text-align: center;
-        }
-
-        img{
-            height: 65%;
-            display: block;
-            margin: auto;
-            width: 100%;
-            border-radius: 5% 5% 0% 0%;
-            
-        }
-    </style>
 
     <body>
         <h1>Concessionnaire Auto</h1>
