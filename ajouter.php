@@ -12,7 +12,7 @@ $req = $bdd->prepare('INSERT INTO voitures (voitures_id, marque, modele, prix,) 
 $req->execute(array($_POST['voitures_id'], $_POST['marque'], $_POST['modele'], $_POST['prix']));
 
 // Redirection du visiteur vers la page d'accueil
-// En commentaire si déboguage
+// En commentaire si déboguages
 
 //header('Location: index.php');
 ?>
