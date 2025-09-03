@@ -8,10 +8,21 @@
     <body>
         <h1>Concessionnaire Auto</h1>
 
-        <?php
+        <form action="ajouter.php" method="post">
+            <h2>Rajouter voiture</h2>
+            <p>
+                <label for="marque">marque</label> : <input type="text" name="marque" id="marque" /><br />
+                <label for="modele">modele</label> :  <input type="text" name="modele" id="modele" /><br />
+                <label for="prix">prix</label> :  <input type="text" name="prix" id="prix" ><br />
+                <input type="hidden" name="voiture_id" value="1" /><br />
+                <input type="submit" value="Envoyer" />
+            </p>
+        </form>
 
+        <?php
+//Connexion base de donnees
         try {
-            $bdd = new PDO('mysql:host=localhost;dbname=concessionnaire;charset=utf8', 'root', 'mysql');
+            $bdd = new PDO('mysql:host=localhost;dbname=concessionaire;charset=utf8', 'root', 'mysql');
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
@@ -20,10 +31,12 @@
         $reponse = $bdd->query('SELECT * FROM voitures ORDER BY ID DESC LIMIT 0, 10');
 
         while ($donnees = $reponse->fetch()) {
-            echo '<p>' . $donnees['marque'] . '</p>';
+            echo '<h1>' . $donnees['marque'] . '</h1>'.
+            '<p>' . $donnees['modele'] . '</p>'.
+            '<p>' . $donnees['prix'] . '$ </p>'
+            ;
         }
         $reponse->closeCursor();
         ?>
     </body>
 </html>
-
