@@ -71,7 +71,7 @@
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
-
+ 
 
             $reponse = $bdd->query('SELECT * FROM voitures ORDER BY ID DESC LIMIT 0, 10');
 
