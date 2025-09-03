@@ -20,7 +20,10 @@
         $reponse = $bdd->query('SELECT * FROM voitures ORDER BY ID DESC LIMIT 0, 10');
 
         while ($donnees = $reponse->fetch()) {
-            echo '<p>' . $donnees['marque'] . '</p>';
+            echo '<h1>' . $donnees['marque'] . '</h1>'.
+            '<p>' . $donnees['modele'] . '</p>'.
+            '<p>' . $donnees['prix'] . '$ </p>'
+            ;
         }
         $reponse->closeCursor();
         ?>
