@@ -1,9 +1,9 @@
 <?php
-require 'modele.php';
+
+require 'Controleur/controleur.php';
+
 try {
-    $voitures = getVoitures();
-    require 'vueAccueil.php';
-} catch (Exception $e) {
-    $msgErreur = $e->getMessage();
-    require 'vueErreur.php';
+    accueil();
+}catch (Exception $e) {
+    erreur($e->getMessage());
 }
