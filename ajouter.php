@@ -1,7 +1,7 @@
 <?php
 // Connexion à la base de données
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=concessionaire;charset=utf8', 'root', 'mysql');
+    $bdd = new PDO('mysql:host=localhost;dbname=concessionnaire;charset=utf8', 'root', 'mysql');
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -12,7 +12,7 @@ $req = $bdd->prepare('INSERT INTO voitures (marque, modele, prix,) VALUES(?, ?, 
 $req->execute(array($_POST['marque'], $_POST['modele'], $_POST['prix']));
 
 // Redirection du visiteur vers la page d'accueil
-// En commentaire si déboguage
+// En commentaire si déboguages
 
 //header('Location: index.php');
 ?>
