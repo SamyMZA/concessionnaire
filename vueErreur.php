@@ -4,5 +4,5 @@
 <p>Une erreur est survenue : <?= $msgErreur ?></p>
 <?php $contenu = ob_get_clean(); ?>
 
-<?php require 'index.php'; ?>
+<?php require 'gabarit.php'; ?>
 
