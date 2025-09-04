@@ -11,3 +11,10 @@ function getVoitures(){
             . ' order by ID desc');
     return $voitures;
 }
+
+function getAchats(){
+    $bdd = getBdd();
+    $achats = $bdd->query('select * from achats'
+            . ' order by ID desc');
+    return $achats;
+}
