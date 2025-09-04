@@ -1,4 +1,4 @@
-<?php $titre = "Concessionnaire Auto" ?>
+<?php $titre = "Concessionaire Auto" ?>
 
 <?php ob_start(); ?>
 <?php foreach($voitures as $voiture):
