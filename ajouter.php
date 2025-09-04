@@ -8,8 +8,8 @@ try {
 // Préparation de la case à cocher
 //$prive = (isset($_POST['prive'])) ? 1 : 0;
 // Insertion du commentaire à l'aide d'une requête préparée
-$req = $bdd->prepare('INSERT INTO voitures (voitures_id, marque, modele, prix,) VALUES(?, ?, ?, ?)');
-$req->execute(array($_POST['voitures_id'], $_POST['marque'], $_POST['modele'], $_POST['prix']));
+$req = $bdd->prepare('INSERT INTO voitures (marque, modele, prix,) VALUES(?, ?, ?)');
+$req->execute(array($_POST['marque'], $_POST['modele'], $_POST['prix']));
 
 // Redirection du visiteur vers la page d'accueil
 // En commentaire si déboguage

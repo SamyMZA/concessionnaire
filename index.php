@@ -13,9 +13,8 @@
             <p>
                 <label for="marque">marque</label> : <input type="text" name="marque" id="marque" /><br />
                 <label for="modele">modele</label> :  <input type="text" name="modele" id="modele" /><br />
-                <label for="prix">prix</label> :  <input type="text" name="prix" id="prix" ><br />
-                <input type="hidden" name="voitures_id" value="1" /><br />
-                <input type="submit" value="Ajouter" />
+                <label for="prix">prix</label> :  <input type="number" name="prix" id="prix" min="1"><br />
+                <input type="submit" value="Submit" />
             </p>
         </form>
 
