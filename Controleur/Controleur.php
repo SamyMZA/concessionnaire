@@ -4,7 +4,7 @@ require 'Modele/modele.php';
 
 // Affiche la liste de tous les articles du blog
 function accueil() {
-    $articles = getVoitures();
+    $voitures = getVoitures();
     require 'Vue/vueAccueil.php';
 }
 

@@ -11,21 +11,23 @@
                 <p> <?= $voiture['marque'] ?> </p>
             </a>
             <p> <?= $voiture['modele'] ?> </p> 
-        </div>
+        </div> 
     </voiture>
 <?php endforeach; ?>    
 
+</br>
 <form action="index.php?action=ajouter" method="post">
     <h2>Ajouter une voiture</h2>
-    <p>
+    <!-- <p> -->
         <label for="texte">Marque</label> : <input type="text" name="marque" id="marque" />
         <br />
         <label for="texte">Modele</label> : <input type="text" name="modele" id="modele" /><br />
         <label for="texte">Prix</label> : <input type="text" name="prix" id="prix" /><br />
         <label for="texte">Lien Image</label> : <input type="text" name="lienimg" id="texte"><br />
         <input type="submit" value="Ajouter" />
-    </p>
+    <!-- </p> -->
 </form>
+</br>
 
 <?php $contenu = ob_get_clean(); ?>
 

@@ -14,9 +14,9 @@ try {
                     $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
                     voiture($id, $erreur);
                 } else
-                    throw new Exception("Identifiant de la voiture incorrect");
+                    throw new Exception("(Method get) Identifiant de la voiture incorrect");
             } else
-                throw new Exception("Aucun identifiant de la voiture");
+                throw new Exception("(Method get) Aucun identifiant de la voiture");
 
             // Ajouter un commentaire
         } else if ($_GET['action'] == 'ajouter') {
@@ -31,9 +31,9 @@ try {
                     //Réaliser l'action commentaire du contrôleur
                     voiture($voiture);
                 } else
-                    throw new Exception("Identifiant de la voiture incorrect");
+                    throw new Exception("(Methode Ajouter) Identifiant de la voiture incorrect");
             } else
-                throw new Exception("Aucun identifiant de voiture");
+                throw new Exception("(Methode Ajouter) Aucun identifiant de voiture");
 
             // Confirmer la suppression
         } else if ($_GET['action'] == 'confirmer') {
@@ -43,9 +43,9 @@ try {
                 if ($id != 0) {
                     confirmer($id);
                 } else
-                    throw new Exception("Identifiant de voiture incorrect");
+                    throw new Exception("(Methode Confirmer) Identifiant de voiture incorrect");
             } else
-                throw new Exception("Aucun identifiant de voiture");
+                throw new Exception("(Methode Confirmer) Aucun identifiant de voiture");
 
             // Supprimer un commentaire
         } else if ($_GET['action'] == 'supprimer') {
@@ -55,9 +55,9 @@ try {
                 if ($id != 0) {
                     supprimer($id);
                 } else
-                    throw new Exception("Identifiant de voiture incorrect");
+                    throw new Exception("(Methode Supprimer) Identifiant de voiture incorrect");
             } else
-                throw new Exception("Aucun identifiant de voiture");
+                throw new Exception("(Methode Supprimer) Aucun identifiant de voiture");
         } else {
             // Action mal définie
             throw new Exception("Action non valide");
