@@ -1,9 +1,8 @@
 <?php $titre = "Concessionnaire Auto" ?>
 
-<?php ob_start(); ?>
+
 <div id="pageAccueil">
     <div id = "annonces">
-
         <?php foreach($voitures as $voiture):
             ?>
                 <div class="voiture"> 
@@ -25,7 +24,3 @@
         <?php endforeach; ?> 
     </div>
 </div>
-<?php $contenu = ob_get_clean(); ?>
-
-<?php require 'gabarit.php'; ?>
-

@@ -1,9 +1,6 @@
 <?php
 
-require 'Controleur/controleur.php';
+require 'Controleur/Routeur.php';
 
-try {
-    accueil();
-}catch (Exception $e) {
-    erreur($e->getMessage());
-}
+$routeur = new Routeur();
+$routeur->routerRequest();
