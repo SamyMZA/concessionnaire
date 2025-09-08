@@ -15,12 +15,12 @@ function voiture($id, $erreur) {
 }
 
 // Ajoute un commentaire à un article
-function ajouter($voiture) {
+function achat($achat) {
     
         // Ajouter le commentaire à l'aide du modèle
-        setVoiture($voiture);
+        setAchat($achat);
         //Recharger la page pour mettre à jour la liste des commentaires associés
-        header('Location: index.php?action=voiture&id=' . $voiture['id']);
+        header('Location: index.php?action=voiture&id=' . $achat['id_voiture']);
     
 }
 
@@ -34,11 +34,11 @@ function confirmer($id) {
 // Supprimer un commentaire
 function supprimer($id) {
     // Lire le commentaire afin d'obtenir le id de l'article associé
-    $voiture = getVoiture($id);
+    $achat = getAchat($id);
     // Supprimer le commentaire à l'aide du modèle
-    deleteVoiture($id);
+    deleteAchat($id);
     //Recharger la page pour mettre à jour la liste des commentaires associés
-    header('Location: index.php?action=voiture&id=' . $voiture['id']);
+    header('Location: index.php?action=voiture&id=' . $achat['id_voiture']);
 }
 
 // Affiche une erreur

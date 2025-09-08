@@ -19,7 +19,7 @@ try {
                 throw new Exception("(Method get) Aucun identifiant de la voiture");
 
             // Ajouter un commentaire
-        } else if ($_GET['action'] == 'ajouter') {
+        } else if ($_GET['action'] == 'achat') {
             if (isset($_POST['id'])) {
                 // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
                 $id = intval($_POST['id']);
@@ -27,9 +27,9 @@ try {
                     // vérifier si l'article existe;
                     $voiture = getVoiture($id);
                     // Récupérer les données du formulaire
-                    $voiture = $_POST;
+                    $achat = $_POST;
                     //Réaliser l'action commentaire du contrôleur
-                    voiture($voiture);
+                    achat($achat);
                 } else
                     throw new Exception("(Methode Ajouter) Identifiant de la voiture incorrect");
             } else

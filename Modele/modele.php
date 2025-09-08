@@ -25,17 +25,39 @@ function getVoiture($idVoiture) {
         throw new Exception("Aucune voiture ne correspond à l'identifiant '$idVoiture'");
 }
 
-function setVoiture($voiture) {
+// Renvoie la liste des commentaires associés à un article
+function getAchats($idVoiture) {
     $bdd = getBdd();
-    $voitures = $bdd->prepare('INSERT INTO voitures (marque, modele, prix, lienimg) VALUES(?,?,?,?)');
-    $voitures->execute(array($voiture['marque'], $voiture['modele'], $voiture['prix'], $voiture['lienimg']));
-    return $voitures;
+    $Achats = $bdd->prepare('select * from Achats'
+            . ' where article_id = ?');
+    $achats->execute(array($idVoiture));
+    return $achats;
+}
+
+// Renvoie un commentaire spécifique
+function getAchat($id) {
+    $bdd = getBdd();
+    $achat = $bdd->prepare('select * from Achats'
+            . ' where id = ?');
+    $achat->execute(array($id));
+    if ($achat->rowCount() == 1)
+        return $achat->fetch();  // Accès à la première ligne de résultat
+    else
+        throw new Exception("Aucun commentaire ne correspond à l'identifiant '$id'");
+    return $achat;
+}
+
+function setAchat($achat) {
+    $bdd = getBdd();
+    $achats = $bdd->prepare('INSERT INTO achats (nom, id_utilisateur, id_voiture, prix) VALUES(?,?,?,?)');
+    $achats->execute(array($achat['nom'], $achat['id_utilisateur'], $achat['id_voiture'], $achat['prix']));
+    return $achats;
 }
 
 // Supprime un commentaire
-function deleteVoiture($id) {
+function deleteAchat($id) {
     $bdd = getBdd();
-    $result = $bdd->prepare('DELETE FROM Voitures'
+    $result = $bdd->prepare('DELETE FROM Achats'
             . ' WHERE id = ?');
     $result->execute(array($id));
     return $result;

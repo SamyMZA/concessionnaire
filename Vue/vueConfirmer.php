@@ -1,18 +1,17 @@
-<?php $titre = "Supprimer - " . $voiture['marque']; ?>
+<?php $titre = "Supprimer - " . $achat['nom']; ?>
 <?php ob_start(); ?>
 <article>
     <header>
         <p><h1>
             Supprimer?
         </h1>
-        <?= $voiture['marque'] ?>, <?= $voiture['modele'] ?> <?= $voiture['prix'] ?>
-        <?= $voiture['lienimg'] ?>
+        <?= $achat['nom'] ?>, <?= $achat['id_utilisateur'] ?>
         </p>
     </header>
 </article>
 
 <form action="index.php?action=supprimer" method="post">
-    <input type="hidden" name="id" value="<?= $voiture['id'] ?>" /><br />
+    <input type="hidden" name="id" value="<?= $achat['id'] ?>" /><br />
     <input type="submit" value="Oui" />
 </form>
 <form action="index.php" method="get" >
