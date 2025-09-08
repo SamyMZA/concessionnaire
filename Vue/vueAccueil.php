@@ -3,12 +3,16 @@
 <?php ob_start(); ?>
 <?php foreach($voitures as $voiture):
      ?>
+     <voiture>
         <div class="voiture"> 
             <img src= <?= $voiture['lienimg'] ?> />
             <h2> <?= $voiture['prix'] ?> $ </h2>
-            <p> <?= $voiture['marque'] ?> </p>
+            <a href="<?= "index.php?action=voiture&id=" . $voiture['id'] ?>"> 
+                <p> <?= $voiture['marque'] ?> </p>
+            </a>
             <p> <?= $voiture['modele'] ?> </p> 
         </div>
+    </voiture>
 <?php endforeach; ?>    
 
 <form action="index.php?action=ajouter" method="post">
