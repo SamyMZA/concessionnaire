@@ -24,6 +24,7 @@
         <label for="texte">Modele</label> : <input type="text" name="modele" id="modele" /><br />
         <label for="texte">Prix</label> : <input type="text" name="prix" id="prix" /><br />
         <label for="texte">Lien Image</label> : <input type="text" name="lienimg" id="texte"><br />
+        <!-- <input type="hidden" name="id" value="<?= $voiture['id'] ?>" /> -->
         <input type="submit" value="Ajouter" />
     <!-- </p> -->
 </form>

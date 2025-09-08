@@ -12,11 +12,9 @@
 <hr />
 <header>
 
-<?php foreach ($voitures as $voiture): ?>
 <p>
     <a href="index.php?action=supprimer&id=<?= $voiture['id'] ?>">
         [Supprimer]
     </a>
 </p>
-<?php endforeach; ?>
 
