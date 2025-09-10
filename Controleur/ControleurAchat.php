@@ -1,7 +1,6 @@
 <?php
 
 require_once 'Modele/Achat.php';
-require_once 'Vue/Vue.php';
 
 class ControleurAchat{
     private $achat;
@@ -11,7 +10,8 @@ class ControleurAchat{
     }
 
     public function achats(){
-
+        $achats = $this->achat->getVoitures();
+        $this->genererVue(['achats' => $achats]);
     }
 
 }
