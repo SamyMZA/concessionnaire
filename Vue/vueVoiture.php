@@ -12,7 +12,18 @@
 <hr />
 <header>
 
+<h2>Acheteur(s) potentiels</h2>
+<?php foreach($achats as $achat): ?>
+<p>
+    <a href="index.php?action=confirmer&id=<?= $achat['id'] ?>">
+        [Supprimer]
+    </a>
+    <?= $achat['nom_utilisateur'] ?> voudrait acheter cette voiture ?>
+</p>
+<?php endforeach; ?> 
+
 </br>
+
 <form action="index.php?action=achat" method="post">
     <h2>Voulez-vous acheter cette voiture?</h2>
     <!-- <p> -->
@@ -25,4 +36,5 @@
     <!-- </p> -->
 </form>
 </br>
+
 

@@ -1,6 +1,6 @@
 <?php $titre = "Supprimer - " . $achat['nom']; ?>
 <?php ob_start(); ?>
-<article>
+<achat>
     <header>
         <p><h1>
             Supprimer?
@@ -8,7 +8,7 @@
         <?= $achat['nom'] ?>, <?= $achat['id_utilisateur'] ?>
         </p>
     </header>
-</article>
+</achat>
 
 <form action="index.php?action=supprimer" method="post">
     <input type="hidden" name="id" value="<?= $achat['id'] ?>" /><br />

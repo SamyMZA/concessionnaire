@@ -56,7 +56,7 @@ function setAchat($achat) {
 // Supprime un commentaire
 function deleteAchat($id) {
     $bdd = getBdd();
-    $result = $bdd->prepare('DELETE FROM achats'
+    $result = $bdd->prepare('DELETE FROM Achats'
             . ' WHERE id = ?');
     $result->execute(array($id));
     return $result;
