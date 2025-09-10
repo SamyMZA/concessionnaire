@@ -18,7 +18,7 @@
     <a href="index.php?action=confirmer&id=<?= $achat['id'] ?>">
         [Supprimer]
     </a>
-    <?= $achat['nom_utilisateur'] ?> voudrait acheter cette voiture ?>
+    <?= $achat['nom_utilisateur'] ?> voudrait acheter cette voiture
 </p>
 <?php endforeach; ?> 
 

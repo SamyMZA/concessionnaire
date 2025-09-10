@@ -5,14 +5,13 @@ require 'Modele/modele.php';
 // Affiche la liste de tous les articles du blog
 function accueil() {
     $voitures = getVoitures();
-   
     require 'Vue/vueAccueil.php';
 }
 
 // Affiche les détails sur un article
 function voiture($id, $erreur) {
     $voiture = getVoiture($id);
-     $achats = getAchats();
+     $achats = getAchats($id);
     require 'Vue/vueVoiture.php';
 }
 

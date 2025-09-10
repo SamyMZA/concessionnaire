@@ -26,10 +26,11 @@ function getVoiture($idVoiture) {
 }
 
 // Renvoie la liste des commentaires associés à un article
-function getAchats(){
+function getAchats($id_voiture){
     $bdd = getBdd();
-    $achats = $bdd->query('select * from achats'
-            . ' order by ID desc');
+    $achats = $bdd->prepare('select * from achats'
+            . ' where id_voiture = ?');
+    $achats->execute(array($id_voiture));
     return $achats;
 }
 
@@ -48,8 +49,8 @@ function getAchat($id) {
 
 function setAchat($achat) {
     $bdd = getBdd();
-    $achats = $bdd->prepare('INSERT INTO achats (id_utilisateur, nom_utilisateur, id_voiture, marque_voiture, prix) VALUES(?,?,?,?,?)');
-    $achats->execute(array($achat['id_utilisateur'], $achat['nom_utilisateur'], $achat['id_voiture'], $achat['marque_voiture'], $achat['prix']));
+    $achats = $bdd->prepare('INSERT INTO achats (id_utilisateur, nom_utilisateur, id_voiture, marque_voiture, prix) VALUES(1,?,?,?,?)');
+    $achats->execute(array($achat['nom_utilisateur'], $achat['id_voiture'], $achat['marque_voiture'], $achat['prix']));
     return $achats;
 }
 

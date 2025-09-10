@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 10 sep. 2025 à 17:57
+-- Généré le :  mer. 10 sep. 2025 à 19:17
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.11
 
@@ -37,14 +37,6 @@ CREATE TABLE `achats` (
   `prix` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Déchargement des données de la table `achats`
---
-
-INSERT INTO `achats` (`id`, `id_utilisateur`, `nom_utilisateur`, `id_voiture`, `marque_voiture`, `prix`) VALUES
-(2, 1, 'Samy', 1, 'Mazda', 5250),
-(4, 4, 'liame', 3, 'mercedes', 1111);
-
 -- --------------------------------------------------------
 
 --
@@ -55,7 +47,9 @@ CREATE TABLE `utilisateurs` (
   `id` int(10) NOT NULL,
   `nom` text COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `téléphone` int(11) NOT NULL
+  `téléphone` int(11) NOT NULL,
+  `nomUtilisateur` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `mdp` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -73,15 +67,6 @@ CREATE TABLE `voitures` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `voitures`
---
-
-INSERT INTO `voitures` (`id`, `marque`, `modele`, `prix`, `lienimg`) VALUES
-(1, 'Mitsubichi', 'Lancer', 4900, 'https://i.gaw.to/vehicles/photos/06/39/063990_2015_mazda_Mazda3.jpg?1024x640'),
-(2, 'Mercedes', 'c300', 100000, 'https://hips.hearstapps.com/hmg-prod/images/2022-mercedes-benz-c300-4matic-sedan-106-1655383528.jpg?crop=0.426xw:0.320xh;0.279xw,0.458xh&resize=1200:*'),
-(111111112, 'toyta', 'corolla', 23213, 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Toyota_Corolla_Hybrid_%28E210%29_IMG_4338.jpg');
-
---
 -- Index pour les tables déchargées
 --
 
@@ -89,7 +74,9 @@ INSERT INTO `voitures` (`id`, `marque`, `modele`, `prix`, `lienimg`) VALUES
 -- Index pour la table `achats`
 --
 ALTER TABLE `achats`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_utilisateur` (`id_utilisateur`),
+  ADD KEY `fk_voiture` (`id_voiture`);
 
 --
 -- Index pour la table `utilisateurs`
@@ -124,6 +111,17 @@ ALTER TABLE `utilisateurs`
 --
 ALTER TABLE `voitures`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111111113;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `achats`
+--
+ALTER TABLE `achats`
+  ADD CONSTRAINT `fk_utilisateur` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_voiture` FOREIGN KEY (`id_voiture`) REFERENCES `voitures` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
