@@ -1,7 +1,7 @@
 <?php
 
 function getBdd(){
-    $bdd = new PDO('mysql:host=localhost;dbname=concessionaire;charset=utf8', 'root', 'mysql', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $bdd = new PDO('mysql:host=localhost;dbname=concessionnaire;charset=utf8', 'root', 'mysql', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     return $bdd;
 }
 
@@ -26,11 +26,10 @@ function getVoiture($idVoiture) {
 }
 
 // Renvoie la liste des commentaires associés à un article
-function getAchats($idVoiture) {
+function getAchats(){
     $bdd = getBdd();
-    $Achats = $bdd->prepare('select * from Achats'
-            . ' where article_id = ?');
-    $achats->execute(array($idVoiture));
+    $achats = $bdd->query('select * from achats'
+            . ' order by ID desc');
     return $achats;
 }
 

@@ -25,9 +25,10 @@
 <form action="index.php?action=achat" method="post">
     <h2>Voulez-vous acheter cette voiture?</h2>
     <!-- <p> -->
-        <label for="texte">Votre nom</label> : <input type="text" name="nom_user" id="nom_user" /> <br />
-        <label for="texte">Votre telephone</label> : <input type="text" name="telephone_user" id="telephone_user" /> <br />
-        <input type="hidden" name ="voiture_id" value="<?= $voiture['id'] ?>" />
+        <label for="texte">ID</label> : <input type="text" name="id_utilisateur" id="id_utilisateur" /> <br />    
+        <label for="texte">Votre nom</label> : <input type="text" name="nom_utilisateur" id="nom_utilisateur" /> <br />        
+        <input type="hidden" name ="id_voiture" value="<?= $voiture['id'] ?>" />
+        <input type="hidden" name ="marque_voiture" value="<?= $voiture['marque'] ?>" />
         <input type="hidden" name ="prix" value="<?= $voiture['prix'] ?>" />
         <input type="submit" value="Acheter cette voiture" />
     <!-- </p> -->

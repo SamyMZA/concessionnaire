@@ -5,6 +5,7 @@ require 'Modele/modele.php';
 // Affiche la liste de tous les articles du blog
 function accueil() {
     $voitures = getVoitures();
+    $achats = getAchats();
     require 'Vue/vueAccueil.php';
 }
 
@@ -27,7 +28,7 @@ function achat($achat) {
 // Confirmer la suppression d'un commentaire
 function confirmer($id) {
     // Lire le commentaire à l'aide du modèle
-    $voiture = getVoiture($id);
+    $achat = getAchat($id);
     require 'Vue/vueConfirmer.php';
 }
 
