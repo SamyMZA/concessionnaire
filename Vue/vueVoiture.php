@@ -12,15 +12,6 @@
 <hr />
 <header>
 
-<?php foreach ($achats as $achat): ?>
-<p>
-    <a href="index.php?action=confirmer&id=<?= $achat['id'] ?>">
-        [Supprimer]
-    </a>
-    <?= $achat['nom'] ?> (<?= $achat['id_utilisateur'] ?>) aimerait acheter cette voiture<br />
-</p>
-<?php endforeach; ?>
-
 </br>
 <form action="index.php?action=achat" method="post">
     <h2>Voulez-vous acheter cette voiture?</h2>

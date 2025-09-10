@@ -20,9 +20,9 @@ try {
 
             // Ajouter un commentaire
         } else if ($_GET['action'] == 'achat') {
-            if (isset($_POST['id'])) {
+            if (isset($_POST['id_voiture'])) {
                 // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
-                $id = intval($_POST['id']);
+                $id = intval($_POST['id_voiture']);
                 if ($id != 0) {
                     // vérifier si l'article existe;
                     $voiture = getVoiture($id);

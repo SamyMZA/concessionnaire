@@ -36,7 +36,7 @@ function getAchats(){
 // Renvoie un commentaire spécifique
 function getAchat($id) {
     $bdd = getBdd();
-    $achat = $bdd->prepare('select * from Achats'
+    $achat = $bdd->prepare('select * from achats'
             . ' where id = ?');
     $achat->execute(array($id));
     if ($achat->rowCount() == 1)
@@ -48,15 +48,15 @@ function getAchat($id) {
 
 function setAchat($achat) {
     $bdd = getBdd();
-    $achats = $bdd->prepare('INSERT INTO achats (nom, id_utilisateur, id_voiture, prix) VALUES(?,?,?,?)');
-    $achats->execute(array($achat['nom'], $achat['id_utilisateur'], $achat['id_voiture'], $achat['prix']));
+    $achats = $bdd->prepare('INSERT INTO achats (id_utilisateur, nom_utilisateur, id_voiture, marque_voiture, prix) VALUES(?,?,?,?,?)');
+    $achats->execute(array($achat['id_utilisateur'], $achat['nom_utilisateur'], $achat['id_voiture'], $achat['marque_voiture'], $achat['prix']));
     return $achats;
 }
 
 // Supprime un commentaire
 function deleteAchat($id) {
     $bdd = getBdd();
-    $result = $bdd->prepare('DELETE FROM Achats'
+    $result = $bdd->prepare('DELETE FROM achats'
             . ' WHERE id = ?');
     $result->execute(array($id));
     return $result;
