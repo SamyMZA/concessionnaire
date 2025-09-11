@@ -16,7 +16,7 @@ body {
 #annonces {
   background-color: #9ac8eb;
   display: flex;
-  width: 80%;
+  width: 100%;
 }
 
 .voiture {

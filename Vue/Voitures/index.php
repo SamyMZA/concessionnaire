@@ -5,10 +5,12 @@
     <div id = "annonces">
         <?php foreach($voitures as $voiture): ?>
             <div class="voiture" for> 
-                    <img src= <?= $voiture['lienimg'] ?> />
+                <img src= <?= $voiture['lienimg'] ?> />
+                <a href="<?= "index.php?action=voiture&id=" . $voiture['id'] ?>"> 
                     <h2> <?= $voiture['prix'] ?> $ </h2>
                     <p> <?= $voiture['marque'] ?> </p>
-                    <p> <?= $voiture['modele'] ?> </p> 
+                    <p> <?= $voiture['modele'] ?> </p>             
+                </a> 
             </div>
         <?php endforeach; ?>    
         
