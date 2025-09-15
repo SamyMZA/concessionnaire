@@ -19,11 +19,11 @@ abstract class Modele{
 
     private function getBdd(){
         if (self::$bdd === null) {
-            // Récupération des paramètres de configuration BD
+
             $dsn = Configuration::get("dsn");
             $login = Configuration::get("login");
             $mdp = Configuration::get("mdp");
-            // Création de la connexion
+
             self::$bdd = new PDO($dsn, $login, $mdp, 
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }

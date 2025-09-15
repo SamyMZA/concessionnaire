@@ -14,15 +14,15 @@ class ControleurAchats extends Controleur{
         $this->genererVue(['achats' => $achats]);
     }
 
-    public function achats() {
-        $achat['id_utilisateur'] = $this->requete->getParametreId("id_voiture");
-        $achat['nom_utilisateur'] = $this->requete->getParametre('id_utilisateur');
-        $achat['id_voiture'] = $this->requete->getParametreId("id_voiture");
-        $achat['marque_voiture'] = $this->requete->getParametre('id_utilisateur');
-        $achat['prix'] = $this->requete->getParametre('id_utilisateur');
-        $this->achat->setAchat($achat);
+    // public function achats() {
+    //     $achat['id_utilisateur'] = $this->requete->getParametreId("id_voiture");
+    //     $achat['nom_utilisateur'] = $this->requete->getParametre('id_utilisateur');
+    //     $achat['id_voiture'] = $this->requete->getParametreId("id_voiture");
+    //     $achat['marque_voiture'] = $this->requete->getParametre('id_utilisateur');
+    //     $achat['prix'] = $this->requete->getParametre('id_utilisateur');
+    //     $this->achat->setAchat($achat);
 
-        header('Location: index.php?action=voiture&id=' . $achat['id_voiture']);
-    }
+    //     header('Location: index.php?action=voiture&id=' . $achat['id_voiture']);
+    // }
 
 }
