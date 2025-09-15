@@ -6,7 +6,7 @@
         <h2> <?= $voiture['marque'] ?> </h2>
         <h3> <?= $voiture['modele'] ?> </h3>             
         <h2> <?= $voiture['prix'] ?> $ </h2>
-        <img src= <?= $voiture['lienimg'] ?> />
+        <img src= <?= $voiture['img'] ?> />
 
     </div>
     
