@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 03 sep. 2025 à 17:59
+-- Généré le :  ven. 19 sep. 2025 à 23:32
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.11
 
@@ -31,8 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `achats` (
   `id` int(10) NOT NULL,
   `id_utilisateur` int(10) NOT NULL,
-  `id_voiture` int(10) NOT NULL,
-  `prix` int(6) NOT NULL
+  `id_voiture` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,9 +42,8 @@ CREATE TABLE `achats` (
 
 CREATE TABLE `utilisateurs` (
   `id` int(10) NOT NULL,
-  `nom` text COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `téléphone` int(11) NOT NULL
+  `nom` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mdp` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -56,9 +54,9 @@ CREATE TABLE `utilisateurs` (
 
 CREATE TABLE `voitures` (
   `id` int(10) NOT NULL,
-  `marque` text COLLATE utf8mb4_general_ci NOT NULL,
-  `modele` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `prix` int(6) NOT NULL
+  `marque` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `modele` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `prix` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

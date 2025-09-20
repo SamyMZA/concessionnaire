@@ -3,6 +3,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
+        <base href="<?= $racineWeb ?>" >
         <link rel="stylesheet" href="Contenu/style.css" />
         <title><?= $titre ?></title>
 
