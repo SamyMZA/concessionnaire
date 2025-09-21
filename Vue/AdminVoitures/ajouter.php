@@ -1,8 +1,8 @@
-<?php $titre = "Le Blogue du prof - " . $article['titre']; ?>
+<?php $titre = "Concessionnaire - " . $voiture['marque']; ?>
 <div id="ajout-voiture">
 
     <header>
-        <h2 id="titreReponses">Ajouter un article de l'utilisateur 1 :</h2>
+        <h2 id="titreReponses">Ajouter une voiture :</h2>
     </header>
     <form action="AdminVoitures/nouveau" method="post">
         <p>

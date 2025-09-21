@@ -61,6 +61,11 @@ class ControleurAdminvoitures extends ControleurAdmin{
         $this->genererVue();
     }
 
+    public function modifier() {
+        $id = $this->requete->getParametreId('id');
+        $voiture = $this->voiture->getVoiture($id);
+        $this->genererVue(['voiture' => $voiture]);
+    }
 
 
 }

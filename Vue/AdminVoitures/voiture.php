@@ -7,8 +7,7 @@
         <h3> <?= $voiture['modele'] ?> </h3>             
         <h2> <?= $voiture['prix'] ?> $ </h2>
         <img src= <?= $voiture['img'] ?> />
-        <button>Modifier</button>
-        <button>Supprimer</button>
+        <a href="adminvoitures/modifier<?= $voiture['id'] ?>">Modifier</a>
     </div>
     
     <div id="historique">
