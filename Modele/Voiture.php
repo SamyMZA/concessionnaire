@@ -22,4 +22,10 @@ class Voiture extends Modele{
             throw new Exception("Aucune Voiture ne correspond à l'identifiant '$idVoiture'");
         }
     }
+
+    function setVoiture($voiture) {
+        $sql = 'INSERT INTO voitures (marque, modele, prix, img ) VALUES(?, ?, ?, ?)';
+        $result = $this->executerRequete($sql, [$voiture['marque'], $voiture['modele'], $voiture['prix'], $voiture['img']]);
+        return $result;
+    }
 }

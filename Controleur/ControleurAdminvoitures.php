@@ -47,6 +47,15 @@ class ControleurAdminvoitures extends ControleurAdmin{
         header('Location: index.php?action=voiture&id=' . $achat['id_voiture']);
     }
 
+    public function nouveau() {
+        $voiture['marque'] = $this->requete->getParametreId('marque');
+        $voiture['modele'] = $this->requete->getParametre('modele');
+        $voiture['prix'] = $this->requete->getParametre('prix');
+        $voiture['img'] = $this->requete->getParametre('img');
+        $this->voiture->setVoiture($voiture);
+        $this->executerAction('index');
+    }
+
 
 
 }

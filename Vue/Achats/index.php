@@ -1,4 +1,4 @@
-<?php $this->titre = "Historique achat" ?>
+<!-- <?php $this->titre = "Historique achat" ?>
 
 
 <div id="historique">
@@ -7,4 +7,4 @@
         ?>
         <p class="achat">  <?= $achat['nom_utilisateur'] ?> a acheter une <?= $achat['marque_voiture'] ?>   </p>
     <?php endforeach; ?> 
-</div>
+</div> -->
