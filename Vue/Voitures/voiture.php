@@ -16,7 +16,7 @@
             ?>
             <p class="achat">  <?=$achat['nom_utilisateur'] ?> a acheter une <?= $voiture['marque'] ?> <?= $voiture['modele'] ?>  </p>
         <?php endforeach; ?> 
-        <form action="index.php?action=achats" method="post">
+        <form action="Voitures/achats" method="post">
             <label for="texte">ID</label> : <input type="text" name="id_utilisateur" id="id_utilisateur" /> <br />    
             <input type="hidden" name ="id_voiture" value="<?= $voiture['id'] ?>" />
             <button type="submit">Acheter</button>

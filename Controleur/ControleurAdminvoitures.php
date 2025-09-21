@@ -48,12 +48,17 @@ class ControleurAdminvoitures extends ControleurAdmin{
     }
 
     public function nouveau() {
-        $voiture['marque'] = $this->requete->getParametreId('marque');
+        $voiture['marque'] = $this->requete->getParametre('marque');
         $voiture['modele'] = $this->requete->getParametre('modele');
         $voiture['prix'] = $this->requete->getParametre('prix');
         $voiture['img'] = $this->requete->getParametre('img');
         $this->voiture->setVoiture($voiture);
         $this->executerAction('index');
+    }
+
+    public function ajouter() {
+        $vue = new Vue("ajouter");
+        $this->genererVue();
     }
 
 

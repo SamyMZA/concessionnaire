@@ -16,7 +16,6 @@
         
         
     </div>
-    <div>
-        <button>Ajouter un vehicule</button>
-    </div>
+<div>
+    <a href="Adminvoitures/ajouter">Ajouter un vehicule</button>
 </div>

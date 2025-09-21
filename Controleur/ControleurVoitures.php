@@ -44,7 +44,10 @@ class ControleurVoitures extends Controleur{
         $this->achat->setAchat($achat);
 
         header('Location: index.php?action=voiture&id=' . $achat['id_voiture']);
+        // A changer pour garder les URL propres et generaliser.
     }
+
+    
 
 
 
