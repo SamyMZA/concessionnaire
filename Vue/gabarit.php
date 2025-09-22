@@ -10,7 +10,7 @@
     <body>
         <div id="global">
             <header>
-                <h1 id="titreSite">Concessionnaire Auto</h1>
+                <h1 id="titreSite"><a href="">Concessionnaire Auto</a></h1>
                 <p>Je vous souhaite la bienvenue sur notre concessionnaireAuto !.</p>
                 <?php if (isset($utilisateur)) : ?>
                         <h3>Bonjour <?= $utilisateur['nom'] ?>,
