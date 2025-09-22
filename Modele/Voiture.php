@@ -28,4 +28,12 @@ class Voiture extends Modele{
         $result = $this->executerRequete($sql, [$voiture['marque'], $voiture['modele'], $voiture['prix'], $voiture['img']]);
         return $result;
     }
+
+    function updateVoiture($voiture){
+        $sql = 'UPDATE voitures'
+        . ' SET marque = ?, modele = ?, prix = ?, img = ?'
+        . ' WHERE id = ?';
+        $result = $this->executerRequete($sql, [$voiture['marque'], $voiture['modele'], $voiture['prix'], $voiture['img'], $voiture['id']]);
+        return $result;
+    }
 }

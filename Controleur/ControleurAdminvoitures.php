@@ -67,5 +67,16 @@ class ControleurAdminvoitures extends ControleurAdmin{
         $this->genererVue(['voiture' => $voiture]);
     }
 
+    public function miseAJour() {
+        $voiture['id'] = $this->requete->getParametreId('id');
+        $voiture['marque'] = $this->requete->getParametre('marque');
+        $voiture['modele'] = $this->requete->getParametre('modele');
+        $voiture['prix'] = $this->requete->getParametre('prix');
+        $voiture['img'] = $this->requete->getParametre('img');
+        $this->voiture->updateVoiture($voiture);
+        $this->executerAction('index');
+    }
+
+
 
 }
