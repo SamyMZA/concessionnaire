@@ -34,5 +34,20 @@ class Achat extends Modele{
         $this->executerRequete($sql, [$achat['id_utilisateur'], $achat['id_voiture']]);
     }
 
+    public function deleteAchat($id) {
+        $sql = 'UPDATE achats'
+                . ' SET efface = 1'
+                . ' WHERE id = ?';
+        $result = $this->executerRequete($sql, [$id]);
+        return $result;
+    }
+
+    public function restoreAchat($id) {
+        $sql = 'UPDATE achats'
+                . ' SET efface = 0'
+                . ' WHERE id = ?';
+        $result = $this->executerRequete($sql, [$id]);
+        return $result;
+    }
 
 }

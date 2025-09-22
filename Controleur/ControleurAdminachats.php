@@ -14,6 +14,29 @@ class ControleurAchats extends Controleur{
         $this->genererVue(['achats' => $achats]);
     }
 
+
+    public function confirmer() {
+        $id = $this->requete->getParametreId("id");
+        $achat = $this->achat->getAchat($id);
+        $this->genererVue(['achat' => $achat]);
+    }
+
+
+    public function supprimer() {
+        $id = $this->requete->getParametreId("id");
+        $achat = $this->achat->getAchat($id);
+        $this->achat->deleteAchat($id);
+        $this->rediriger('Adminvoitures', 'lire/' . $achat['id_voiture']);
+    }
+
+
+    public function retablir() {
+        $id = $this->requete->getParametreId("id");
+        $achat = $this->achat->getAchat($id);
+        $this->achat->restoreAchat($id);
+        $this->rediriger('Adminvoitures', 'lire/' . $achat['id_voiture']);
+    }
+
     // public function achats() {
     //     $achat['id_utilisateur'] = $this->requete->getParametreId("id_voiture");
     //     $achat['nom_utilisateur'] = $this->requete->getParametre('id_utilisateur');
