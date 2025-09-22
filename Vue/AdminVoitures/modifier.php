@@ -4,13 +4,13 @@
     <header>
         <h2 id="titreReponses">Modifier une voiture:</h2>
     </header>
-    <form action="AdminVoitures/modifier" method="post">
+    <form action="AdminVoitures/miseAjour" method="post">
         <p>
-            <label for="marque">Marque</label> : <input type="text" name="marque" id="marque" /> <br />
-            <label for="modele">Modele</label> :  <input type="text" name="modele" id="modele" /><br />
-            <label for="prix">Prix</label> :  <input type="number" name="prix" id="prix" ></input><br />
-            <label for="img">Lien de l'image</label> : <input type="text" name="img" id="img" /> <br />
             <input type="hidden" name="id" value="<?= $voiture['id'] ?>" /><br />
+            <label for="marque">Marque</label> : <input type="text" name="marque" id="marque" value="<?=$voiture['marque']?>"/> <br />
+            <label for="modele">Modele</label> :  <input type="text" name="modele" id="modele"value="<?=$voiture['modele']?>"/> <br />
+            <label for="prix">Prix</label> :  <input type="number" name="prix" id="prix" value="<?=$voiture['prix']?>"/> <br />
+            <label for="img">Lien de l'image</label> : <input type="text" name="img" id="img" value="<?=$voiture['img']?>"/> <br />
             <input type="submit" value="Envoyer" />
         </p>
     </form>

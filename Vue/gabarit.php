@@ -20,9 +20,15 @@
                         <h3>[<a href="Utilisateurs/index">Se connecter</a>] <small>(admin/admin)</small></h3>
                 <?php endif; ?>
             </header>
+            <a href="Apropos">
+                <h4>À propos</h4>
+            </a>
+            <a href="Achats">
+                <h4>Table Achat</h4>
+            </a>
             <div id="contenu">
                 <?= $contenu ?>
-            </div> 
+            </div>
             <footer id="piedSite">
                 Site réalisé avec PHP, HTML5 et CSS.
             </footer>
