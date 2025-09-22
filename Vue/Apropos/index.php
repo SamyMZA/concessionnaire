@@ -17,7 +17,7 @@
     <h2>Lien table</h2>
 
     <p>un utilisateur peut acheter plusieurs voitures</p>
-    <p>une voiture peut et etre a cheter pas plusieurs utilisateur (offre)</p>
+    <p>une voiture peut etre acheter par plusieurs utilisateur (offre)</p>
     <p>table achat</p>
 
 </div>
