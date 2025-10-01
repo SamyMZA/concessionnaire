@@ -11,9 +11,9 @@
     <div class="row">
         <h2>Modifier une voiture</h2>
 
-        <form action="{{ route('voitures.update', $voiture->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
+        <form method="post" action="{{ url('voitures/'. $voiture->id) }}" >
             @method('PATCH')
+            @csrf
             <p>Marque :</p> <input type="text" id="marque" name="marque" value="{{ $voiture->marque }}">
             <p>Modele :</p> <input type="text" id="modele" name="modele" value="{{ $voiture->modele }}">
             <p>Prix :</p> <input type="text" id="prix" name="prix" value="{{ $voiture->prix }}">

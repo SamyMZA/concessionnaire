@@ -85,7 +85,7 @@ class VoitureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Voiture $voiture)
     {
         $validator = Validator::make($request->all(),[
             'marque' => 'required',
@@ -98,8 +98,8 @@ class VoitureController extends Controller
             return redirect()->back()->with('warning','Tous les champs sont requis');   
         }
         else{
-            Voiture::create($request->all());       
-            return redirect('/')->with('success', 'voiture Ajouté avec succès');
+            $voiture->update($request->all());       
+            return redirect('/')->with( 'success', 'voiture Ajouté avec succès');
         }
     }
 

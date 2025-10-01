@@ -11,7 +11,8 @@
     <div class="row">
         <h2>Ajouter une voiture</h2>
 
-        <form action="{{ route('voitures.store') }}" method="POST" enctype="multipart/form-data"> @csrf
+        <form action="{{ route('voitures.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <p>Marque :</p> <input type="text" id="marque" name="marque">
             <p>Modele :</p> <input type="text" id="modele" name="modele">
             <p>Prix :</p> <input type="text" id="prix" name="prix">
