@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route:: get ('/', [VoitureController::class, 'index']);
 
 Route::resources([
-                 'voiture'=> VoitureController::class,
-                 'achat'=> AchatController::class,
+                 'voitures'=> VoitureController::class,
+                 'achats'=> AchatController::class,
                 ]);
