@@ -6,15 +6,20 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <div class="row">
-
-        <div class="col-lg-10">
-            <h2>Ajout voiture voitures</h2>
-        </div>
-
 
 <div class="container">
+    <div class="row">
+        <h2>Ajouter une voiture</h2>
 
+        <form action="{{ route('voitures.store') }}" method="POST" enctype="multipart/form-data"> @csrf
+            <p>Marque :</p> <input type="text" id="marque" name="marque">
+            <p>Modele :</p> <input type="text" id="modele" name="modele">
+            <p>Prix :</p> <input type="text" id="prix" name="prix">
+            <p>Image :</p> <input type="text" id="img" name="img">
+            <button type="submit">Ajouter</button>
+        </form>
+        <a href="{{ url('/') }}">retour</a>
+    </div>
 </div>
 
 
