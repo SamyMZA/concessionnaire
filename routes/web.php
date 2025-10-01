@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\VoitureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/apropos', function () {
+/*Route::get('/apropos', function () {
     return view('apropos');
 }); 
 Route::get('/apropos', function () {
     return view('apropos');
-}); 
+}); */
+
 Route:: get ('/', [VoitureController::class, 'index']);
-Route:: get ('/', [VoitureController::class, 'index']);
+
 Route::resources([
-    'voitures'=> VoitureController::class,
-    'achats'=> AchatController::class,
-]);
+                 'voiture'=> VoitureController::class,
+                 'achat'=> AchatController::class,
+                ]);
+
+
 /*  Route::controller(VoitureController::class)->group(function () {
     
        Route::get('/', 'index');

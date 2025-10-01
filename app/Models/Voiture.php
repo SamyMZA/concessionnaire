@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Voiture extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = ['marque', 'modele', 'prix', 'img'];
 
-    public function achats(): HasMany
+    public function achats()
     {
-        return $this ->hasMany(Achat::class);
+        return $this ->hasMany(Achat::class, 'id_utilisateur');
     }
 }

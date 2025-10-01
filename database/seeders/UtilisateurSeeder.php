@@ -14,14 +14,15 @@ class UtilisateurSeeder extends Seeder
      *
      * @return void
      */
-    public function run(): void
+    public function run()
     {
         $faker = Factory::create();
 
-        for($i=0; $i < 6; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             $utilisateur = new Utilisateur;
-            $utilisateur->nom = $faker->firstName;
-            $utilisateur->mdp = $faker->password;
+            $utilisateur->nom = $faker->firstName();
+            $utilisateur->mdp = $faker->password();
+            $utilisateur->save();
         }
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Voiture;
+use App\Models\Achat;
+use App\Models\Utilisateur;
 
 class VoitureController extends Controller
 {
@@ -14,7 +17,7 @@ class VoitureController extends Controller
     public function index()
     {
         $voitures = Voiture::all();
-        return view('voitures.index', compact('voitures'));
+        return view("voitures.index", compact("voitures"));
     }
 
     /**
@@ -24,7 +27,7 @@ class VoitureController extends Controller
      */
     public function create()
     {
-        return view('voitures.create');
+        return view("voitures.create");
     }
 
     /**
@@ -35,22 +38,27 @@ class VoitureController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-        'marque'=>'required',
-        'modele'=>'required',
-        'prix'=>'required',
-        'img'=>'required',
-        //'marque'=>'required |image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        $validator = Validator::make($request->all(),[
+            'marque' => 'required',
+            'modele' => 'required',
+            'prix' => 'required',
+            'img' => 'required |image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
-          /*   if ($request->file('img')->isValid()) {
+        if ($request->file('img')->isValid()) {
                 $image = $request->file('img');
                 $fileName = time() . '.' . $image->getClientOriginalExtension();
               //  $path = $image->storeAs('images/upload', $fileName, 'public');
-        
-            } */
+        }
 
+        if($validator->fails())
+        {
+            return redirect()->back()->with('warning','Tous les champs sont requis');   
+        }
+        else{
+            Voiture::create($request->all());       
+            return redirect('/')->with('success', 'voiture Ajouté avec succès');
+        }
 
         $voiture = new voiture([
             'marque' => $request->get('marque'),
@@ -64,7 +72,6 @@ class VoitureController extends Controller
         //$path = $request->file('img')->store('public/images');
         $voiture->save();
         return redirect('/')->with('success', 'voiture ajouté avec succès');
-
     }
 
     /**
@@ -76,7 +83,6 @@ class VoitureController extends Controller
     public function show($id)
     {
         $voiture = Voiture::findOrFail($id);
-        //$achats = Achat::where('id_voiture', $id)->get();
         return view('voitures.show', compact('voiture'));
     }
 
@@ -101,32 +107,37 @@ class VoitureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'marque'=>'required',
-            'modele'=>'required',
-            'prix'=>'required',
-            //'img'=>'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        $validator = Validator::make($request->all(),[
+            'marque' => 'required',
+            'modele' => 'required',
+            'prix' => 'required',
+            'img' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
-         // if ($request->file('img')->isValid()) {
-       /*      $image = $request->file('img');
+        if ($request->file('img')->isValid()) {
+             $image = $request->file('img');
             $fileName = time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('images/upload', $fileName, 'public'); */
-    
-       // }
-        //$file = $request->file('img');
-    //if ($file = $request->haseFile('img')) 
+            $path = $image->storeAs('images/upload', $fileName, 'public');
+        }
+        $file = $request->file('img');
 
-    $voiture = voiture::findOrFail($id);
-    $voiture->marque = $request->get('marque');
-    $voiture->modele = $request->get('modele');
-    $voiture->prix = $request->get('prix');
-    //$voiture->img = $file->getClientOriginalName();
+        $voiture = voiture::findOrFail($id);
+        $voiture->marque = $request->get('marque');
+        $voiture->modele = $request->get('modele');
+        $voiture->prix = $request->get('prix');
+        $voiture->img = $file->getClientOriginalName();
 
-    $voiture->update();
-    //$file->move("images", $file->getClientOriginalName());
+        if($validator->fails())
+        {
+            return redirect()->back()->with('warning','Tous les champs sont requis');   
+        }
+        else{
+            Voiture::create($request->all());       
+            return redirect('/')->with('success', 'voiture Ajouté avec succès');
+        }
 
-    return redirect('/')->with('success', 'voiture modifié avec succès');
+        $voiture->update();
+        $file->move("images", $file->getClientOriginalName());
     }
 
     /**
@@ -139,7 +150,6 @@ class VoitureController extends Controller
     {
         $voiture = Voiture::findOrFail($id);
         $voiture->delete();
-
         return redirect('/')->with('success', 'voiture supprimé avec succès');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Achat;
+use App\Models\Voiture;
 use Illuminate\Http\Request;
 
 class AchatController extends Controller
@@ -34,10 +36,11 @@ class AchatController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_utlisateur'=>'required',
-            'id_voiture'=>'required',
+        $validator = Validator::make($request->all(), [
+            'id_utilisateur' => 'required',
+            'id_voiture' => 'required',
         ]);
+
         $achat = new achat([
             'id_utilisateur'=> $request->get('id_utilisateur'),
             'id_voiture'=>$request->get('id_voiture'),

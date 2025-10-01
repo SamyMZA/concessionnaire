@@ -15,12 +15,19 @@ class AchatSeeder extends Seeder
      *
      * @return void
      */
-    public function run(): void
+    public function run()
     {
         $faker = Factory::create();
 
         $achat = new Achat;
         $utilisateurs = Utilisateur::all()->pluck('id')->toArray();
         $voitures = Voiture::all()->pluck('id')->toArray();
+
+        foreach(range(1, 10) as $i) {
+            $achat::create([
+                'id_utilisateur' => $faker->randomElement($utilisateurs),
+                'id_voiture' => $faker->randomElement($voitures),
+            ]);
+        }
     }
 }

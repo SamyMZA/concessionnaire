@@ -14,16 +14,17 @@ class VoitureSeeder extends Seeder
      *
      * @return void
      */
-    public function run(): void
+    public function run()
     {
-        $faker=Factory::create();
+        $faker = Factory::create();
 
-        for ($i = 0; $i < 6; $i++) {
-            $voiture = new Voiture;
+        for ($i = 0; $i < 10; $i++) {
+            $voiture = new Voiture();
             $voiture->marque = $faker->company;
             $voiture->modele = $faker->safeColorName;
-            $voiture->prix = $faker->numberBetween($min = 999, $max = 8999);
+            $voiture->prix = $faker->numberBetween(5000, 50000);
             $voiture->img = $faker->imageUrl($width = 640, $height = 480);
+            $voiture->save();
         }
     }
 }

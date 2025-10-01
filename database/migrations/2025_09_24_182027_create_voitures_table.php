@@ -19,6 +19,7 @@ class CreateVoituresTable extends Migration
             $table->string('modele',255);
             $table->integer('prix');
             $table->string('img',255);
+            $table->timestamps();
         });
     }
 
