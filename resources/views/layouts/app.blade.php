@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     <!-- JQuery -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" /> -->
@@ -29,7 +30,7 @@
 <body>
 
     <div class="nav">
-        <h1>Concessionnaire</h1>
+        <a href="/"><h1>Concessionnaire</h1></a>
     </div>
 
         <main class="py-4">
