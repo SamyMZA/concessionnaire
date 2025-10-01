@@ -9,22 +9,26 @@
     <div class="container">
         <div class="row1">
             <h2>Liste des voitures</h2>
-            <a class="btn btn-success" href="{{ url('voitures/create') }}">Ajouter une voiture</a>
+            <a href="{{ url('voitures/create') }}">Ajouter une voiture</a>
         </div>
     
     
+        
         <div class="row2">
             @foreach ($voitures as $index => $voiture)
             <div class="cardVoiture">
-                    <h2>
+                    <a href="{{ url('voitures/'. $voiture->id) }}"><h2>
                         {{ $voiture->marque }}
-                    </h2>
-    
-                    {{ $voiture->modele }}
-                    <p>{{ $voiture->prix }} $</p>      
+                    </h2></a>
+
+                    <p>{{ $voiture->modele }}</p>
+                    <p>{{ $voiture->prix }} $</p>
+                    <img height="200px" width="300px" src="{{ $voiture->img }}" alt="">    
+
             </div>
             @endforeach
         </div>
+        
     </div>
 
 
