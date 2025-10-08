@@ -12,6 +12,7 @@ class Voiture extends Model
         'marque',
         'modele',
         'prix',
+        'dispo',
         'img',
     ];
 
