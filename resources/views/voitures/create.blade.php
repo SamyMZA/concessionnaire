@@ -16,7 +16,7 @@
             <p>Marque :</p> <input type="text" id="marque" name="marque">
             <p>Modele :</p> <input type="text" id="modele" name="modele">
             <p>Prix :</p> <input type="text" id="prix" name="prix">
-            <p>Image :</p> <input type="text" id="img" name="img">
+            <p>Image :</p> <input type = "file" name= "img"  class = "form-control">
             <button type="submit">Ajouter</button>
         </form>
         <a href="{{ url('/') }}">retour</a>
