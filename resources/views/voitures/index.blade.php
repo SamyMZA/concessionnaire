@@ -12,20 +12,24 @@
             <a href="{{ url('voitures/create') }}">Ajouter une voiture</a>
         </div>
     
-    
+        <a href="{{ route("achats.index") }}">Liste des achats</a>
         
         <div class="row2">
             @foreach ($voitures as $index => $voiture)
-            <div class="cardVoiture">
-                    <a href="{{ url('voitures/'. $voiture->id) }}"><h2>
-                        {{ $voiture->marque }}
-                    </h2></a>
+                @if ($voiture->dispo == 1)
+                    <div class="cardVoiture">
+                        <a href="{{ url('voitures/'. $voiture->id) }}"><h2>
+                            @if ($voiture->img)
+                                <img height="200px" width="300px" src="../images/upload/{{$voiture->img}}" > 
+                            @endif
+                        </h2></a>
+                        
+                        <p>{{ $voiture->marque }}</p>
+                        <p>{{ $voiture->modele }}</p>
+                        <p>{{ $voiture->prix }} $</p>
 
-                    <p>{{ $voiture->modele }}</p>
-                    <p>{{ $voiture->prix }} $</p>
-                    <img height="200px" width="300px" src="{{ $voiture->img }}" alt="">    
-
-            </div>
+                    </div>  
+                @endif
             @endforeach
         </div>
         
