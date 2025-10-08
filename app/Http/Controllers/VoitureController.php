@@ -42,14 +42,27 @@ class VoitureController extends Controller
             'marque' => 'required',
             'modele' => 'required',
             'prix' => 'required',
-            'img' => 'required',
+            'img'=> 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
+
+        if ($request->file('img')->isValid()){
+            $image = $request->file('img');
+            $fileName = time().'.'.$image->getClientOriginalExtension();
+            $path = $image->storeAs('images/upload', $fileName,'public');
+        }
+
+
         if($validator->fails())
         {
             return redirect()->back()->with('warning','Tous les champs sont requis');   
         }
         else{
-            Voiture::create($request->all());       
+            Voiture::create([
+                'marque'=> $request->input('marque'),
+                'modele'=> $request->input('modele'),
+                'prix'=> $request->input('prix'),
+                'img'=> $fileName,
+            ]);       
             return redirect('/')->with('success', 'voiture Ajouté avec succès');
         }
     }
@@ -91,7 +104,6 @@ class VoitureController extends Controller
             'marque' => 'required',
             'modele' => 'required',
             'prix' => 'required',
-            'img' => 'required',
         ]);
         if($validator->fails())
         {
