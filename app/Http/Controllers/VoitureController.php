@@ -61,7 +61,7 @@ class VoitureController extends Controller
                 'marque'=> $request->input('marque'),
                 'modele'=> $request->input('modele'),
                 'prix'=> $request->input('prix'),
-                'img'=> $fileName,
+                'img'=> $fileName, 
             ]);       
             return redirect('/')->with('success', 'voiture Ajouté avec succès');
         }

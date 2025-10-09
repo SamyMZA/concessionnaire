@@ -9,9 +9,10 @@
     <div class="container">
         <div class="show">
             <h2>voitures #{{$voiture->id}}</h2>
-            @if ($voiture->img)
-                <img src="../images/upload/{{$voiture->img}}" > 
+            @if($voiture->img)
+                <img src="{{ asset($voiture->img) }}" alt="voiture">
             @endif
+
             <p>{{ $voiture->marque }}</p>
             <p>{{ $voiture->modele }}</p>
             <p>{{ $voiture->prix }} $</p>

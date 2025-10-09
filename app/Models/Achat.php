@@ -19,6 +19,6 @@ class Achat extends Model
     }
 
     public function utilisateur(){
-        return $this->belongsTo( utilisateur::class,'id_utilisateur');
+        return $this->belongsTo( Utilisateur::class,'id_utilisateur');
     }
 }
