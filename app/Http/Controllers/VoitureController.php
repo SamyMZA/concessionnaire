@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Illuminate\Http\Request;
 use App\Models\Voiture;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
 
 class VoitureController extends Controller
 {
@@ -104,17 +105,43 @@ class VoitureController extends Controller
             'marque' => 'required',
             'modele' => 'required',
             'prix' => 'required',
+            'img'=> 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
+
         if($validator->fails())
         {
             return redirect()->back()->with('warning','Tous les champs sont requis');   
         }
-        else{
-            $voiture->update($request->all());       
-            return redirect('/')->with( 'success', 'voiture Ajouté avec succès');
-        }
-    }
 
+        if ($request->file('img')->isValid()){
+
+            $destination = 'public/images/upload/'.$voiture->img;
+
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            
+            $image = $request->file('img');
+            $fileName = time().'.'.$image->getClientOriginalExtension();
+            
+            $image->storeAs('public/images/upload/', $fileName);
+
+            $voiture->img = $fileName;
+        }
+
+        $voiture::save([
+            'marque'=> $request->input('marque'),
+            'modele'=> $request->input('modele'),
+            'prix'=> $request->input('prix'),
+            'img'=> $fileName, 
+        ]); 
+        // $voiture->update();       
+        return redirect('/')->with( 'success', 'voiture Ajouté avec succès');
+        
+    }
+    
+ 
     /**
      * Remove the specified resource from storage.
      *
@@ -124,6 +151,8 @@ class VoitureController extends Controller
     public function destroy($id)
     {
         $voiture = Voiture::findOrFail($id);
+        $path = 'public/images/upload/'.$voiture->img;
+        Storage::delete($path);
         $voiture->delete();
         return redirect('/')->with('success', 'voiture supprimé avec succès');
     }
