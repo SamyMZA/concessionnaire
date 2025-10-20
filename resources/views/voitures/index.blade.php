@@ -20,10 +20,11 @@
                     <div class="cardVoiture">
                         <a href="{{ url('voitures/'. $voiture->id) }}"><h2>
                             @if ($voiture->img)
-                                <img height="200px" width="300px" src="../images/upload/{{$voiture->img}}" > 
+                                <img height="200px" width="300px" src="{{ asset('storage/images/upload/'.$voiture->img) }}" > 
                             @endif
+
                         </h2></a>
-                        
+
                         <p>{{ $voiture->marque }}</p>
                         <p>{{ $voiture->modele }}</p>
                         <p>{{ $voiture->prix }} $</p>

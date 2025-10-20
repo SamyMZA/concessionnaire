@@ -10,7 +10,7 @@
         <div class="show">
             <h2>voitures #{{$voiture->id}}</h2>
             @if($voiture->img)
-                <img src="{{ asset($voiture->img) }}" alt="voiture">
+                <img src="{{ asset('storage/images/upload/'.$voiture->img) }}">
             @endif
 
             <p>{{ $voiture->marque }}</p>
