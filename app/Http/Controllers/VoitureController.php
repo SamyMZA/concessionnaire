@@ -115,7 +115,7 @@ class VoitureController extends Controller
 
         if ($request->file('img')->isValid()){
 
-            $destination = 'public/images/upload/'.$voiture->img;
+            $destination = 'storage/images/upload/'.$voiture->img;
 
             if(File::exists($destination))
             {
@@ -130,13 +130,13 @@ class VoitureController extends Controller
             $voiture->img = $fileName;
         }
 
-        $voiture::save([
+        $voiture->save([
             'marque'=> $request->input('marque'),
             'modele'=> $request->input('modele'),
             'prix'=> $request->input('prix'),
             'img'=> $fileName, 
         ]); 
-        // $voiture->update();       
+        $voiture->update();       
         return redirect('/')->with( 'success', 'voiture Ajouté avec succès');
         
     }
@@ -156,4 +156,7 @@ class VoitureController extends Controller
         $voiture->delete();
         return redirect('/')->with('success', 'voiture supprimé avec succès');
     }
+
+
+
 }
