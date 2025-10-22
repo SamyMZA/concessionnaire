@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route:: get ('/', [VoitureController::class, 'index']);
+Route::post('/autocomplete', [VoitureController::class,'autocomplete'])->name('autocomplete');
 
 Route::resources([
                  'voitures'=> VoitureController::class,
