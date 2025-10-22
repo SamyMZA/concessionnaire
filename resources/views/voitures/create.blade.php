@@ -1,51 +1,27 @@
+
 @extends('layouts.app')
-
-
+@php $locale = session()->get('locale'); @endphp
+    
 @section('content')
 
-    <h1>Ajouter une voiture</h1>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
-    @if ($errors->any())
+<div class="container">
+    <div class="row">
+        <h2>@lang("general.ajouter voiture")</h2>
 
-        <div class="alert alert-danger">
-
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-
-            </ul>
-
-        </div>
-
-    @endif
-
-    <form action="{{ url('voitures') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        
-
-        <div class="form-group mb-3">
-            <label for="marque">Marque:</label>
-            <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
-        </div>
+        <form action="{{ route('voitures.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <p>@lang("general.marque") :</p> <input type="text" id="marque" name="marque">
+            <p>@lang("general.modele") :</p> <input type="text" id="modele" name="modele">
+            <p>@lang("general.prix") :</p> <input type="text" id="prix" name="prix">
+            <p>Image :</p> <input type = "file" name= "img"  class = "form-control">
+            <button type="submit">@lang("general.ajouter")</button>
+        </form>
+        <a href="{{ url('/') }}">@lang("general.retour")</a>
+    </div>
+</div>
 
 
-        <div class="form-group mb-3">
-
-            <label for="content">Modele:</label>
-            <input type="text" class="form-control" id="modele" placeholder="Entrez le modele" name="modele">
-          </div>
-
-           <div class="form-group mb-3">
-            <label for="prix">Prix:</label>
-            <input type="text" class="form-control" id="marque" placeholder="Entrez le prix" name="prix">
-            {{--   <input type = "file" name= "img"> --}}
-          <!--<input type="hidden" name="user_id" value="<?= 1?>" /><br /> -->
-        </div>
-
-        <button type="submit" class="btn btn-primary">Enregister</button>
-
-    </form>
-
-@endsection
+@endsection 

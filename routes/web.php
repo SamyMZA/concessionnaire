@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\VoitureController;
+use \App\Http\Controllers\AchatController;
+use \App\Http\Controllers\LocalizationController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +26,16 @@ Route::get('/apropos', function () {
 }); */
 
 Route:: get ('/', [VoitureController::class, 'index']);
+Route::post('/autocomplete', [ArticleController::class,'autocomplete'])->name('autocomplete');
+Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
 
 Route::resources([
-                 'voiture'=> VoitureController::class,
-                 'achat'=> AchatController::class,
+                 'voitures'=> VoitureController::class,
+                 'achats'=> AchatController::class,
                 ]);
 
 
-/*  Route::controller(VoitureController::class)->group(function () {
+  /*Route::controller(VoitureController::class)->group(function () {
     
        Route::get('/', 'index');
        Route::get('/voitures/create', 'create');
@@ -41,4 +47,4 @@ Route::resources([
        Route::patch('/voitures/{id}', 'update');
        Route::delete('/voitures/{id}', 'destroy');
       
-   });  */
+   }); */

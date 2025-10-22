@@ -1,56 +1,28 @@
+
 @extends('layouts.app')
 
-
+    
 @section('content')
 
-
-    <h1>Modifier voiture: {{ $voiture->marque }} {{ $voiture->modele }}</h1>
-
-
-    @if ($errors->any())
-
-        <div class="alert alert-danger">
-
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-
-        </div>
-
-    @endif
-
-    <form method="post" action="{{ url('voitures/'. $voiture->id) }}" >
-        @method('PATCH')
-        @csrf
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
-        <div class="form-group mb-3">
+<div class="container">
+    <div class="row">
+        <h2>@lang("general.modifier une voiture")</h2>
 
-            <label for="marque">Marque:</label>
-            <textarea name="marque" id="marque" cols="30" rows="10" class="form-control">{{ $article->marque }}</textarea>
+        <form method="POST" action="{{ url('voitures/'. $voiture->id) }}"  enctype="multipart/form-data" >
+            @method('PATCH')
+            @csrf
+            <p>Marque :</p> <input type="text" id="marque" name="marque" value="{{ $voiture->marque }}">
+            <p>Modele :</p> <input type="text" id="modele" name="modele" value="{{ $voiture->modele }}">
+            <p>Prix :</p> <input type="text" id="prix" name="prix" value="{{ $voiture->prix }}">
+            <p>Image:</p> <input type = "file" name= "img"  id = "img"  accept="image/*">
+            <button type="submit">@lang("general.modifier")</button>
+        </form>
+        <a href="{{ url('voitures/'.$voiture->id) }}">@lang("general.retour")</a>
+    </div>
+</div>
 
-        </div>
 
-        <div class="form-group mb-3">
-
-            <label for="modele">Ajouter le modele:</label>
-            <input type="text" class="form-control" id="modele" placeholder="Entrer le modele" name="modele" value="{{ $article->modele }}">
-
-        </div>
-
-        <div class="form-group mb-3">
-
-            <label for="prix">Ajouter le prix:</label>
-            <input type="text" class="form-control" id="prix" placeholder="100" name="prix" value="{{ $article->prix }}">
-
-        </div>
-
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
-       
-            <a href="{{ url('voitures/'. $voiture->id) }}" class="btn btn-info">Annuler</a>  
-    </form>
-   
-  
-@endsection
+@endsection 

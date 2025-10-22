@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Achat;
 use App\Models\Voiture;
+use App\Models\Utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AchatController extends Controller
 {
@@ -15,7 +17,8 @@ class AchatController extends Controller
      */
     public function index()
     {
-        //
+        $achats = Achat::all();
+        return view("achats.index", compact("achats"));
     }
 
     /**
@@ -41,13 +44,21 @@ class AchatController extends Controller
             'id_voiture' => 'required',
         ]);
 
-        $achat = new achat([
-            'id_utilisateur'=> $request->get('id_utilisateur'),
-            'id_voiture'=>$request->get('id_voiture'),
-        ]);
+        if($validator->fails())
+        {
+            return redirect()->back()->with('warning','Tous les champs sont requis');   
+        }
+        else{
+            // Achat::create(attributes: $request->all());
 
-        $achat->save();
-        return redirect()->back()->with('success', 'votre achat ajouté avec succès');
+            $achat = Achat::create($request->all());
+
+
+            $voiture = $achat->voiture; // relation Eloquent
+            $voiture->dispo = 0;
+            $voiture->save();
+            return redirect('/')->with('success', 'Achat Ajouté avec succès');
+        }
     }
 
     /**
@@ -93,6 +104,11 @@ class AchatController extends Controller
     public function destroy($id)
     {
         $achat = Achat::findOrFail($id);
+
+        $voiture = $achat->voiture; // relation Eloquent
+        $voiture->dispo = 1;
+        $voiture->save();
+
         $achat->delete();
 
         return redirect()->back();

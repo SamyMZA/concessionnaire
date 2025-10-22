@@ -9,7 +9,7 @@ class Voiture extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['marque', 'modele', 'prix', 'img'];
+    protected $fillable = ['marque', 'modele', 'prix', 'img', 'dispo'];
 
     public function achats()
     {

@@ -1,65 +1,40 @@
+
 @extends('layouts.app')
 
+    
+@section('content')
 
-@section('modele')
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-<div class="container">
+    <div class="container">
+        <div class="show">
+            <h2>@lang("general.voiture") #{{$voiture->id}}</h2>
+            @if($voiture->img)
+                <img height="200px" width="300px" src="{{ asset('storage/images/upload/'.$voiture->img) }}" >
+            @endif
 
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{ $voiture->marque }} </h1>
-            <p class="lead">{{ $voiture->modele }}</p>
-
-            <div class="buttons">
-                <a href="{{ url('voitures/'. $voiture->id .'/edit') }}" class="btn btn-info">Modifier</a>
-                <a href="{{ url('/') }}" class="btn btn-info">Retour à la page d'accueil</a>  
-                <form action="{{ url('voitures/'. $voiture->id) }}" method="POST" style="display: inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                </form>
-            </div>
+            <p>{{ $voiture->marque }}</p>
+            <p>{{ $voiture->modele }}</p>
+            <p>{{ $voiture->prix }} $</p>
         </div>
+
+        <a href="{{ url('voitures/'. $voiture->id . '/edit') }}">@lang("general.modifier")</a>
+
+            <form method="post" action="{{ url('voitures/'. $voiture->id) }}" >
+            @csrf
+            @method('DELETE')
+                <button type="submit">@lang("general.supprimer")</button>
+           </form>
+
+
+            <form action="{{ route('achats.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+                <input type="hidden" name="id_utilisateur" value="1" >
+                <input type="hidden" name="id_voiture" value="{{ $voiture->id }}">
+                {{ $voiture->dispo == 0 }}
+            <button type="submit">@lang("general.acheter")</button>
+            </form>
     </div>
 
- {{-- Section des achats --}}
- <div class="container">   
-   
-    <h2> Les achats:</h2>
-    @if ('success')
-    <h6 class="alert alert-warning mb-3">{{'success'}}</h6>
-@endif
-    @foreach ($voiture->achats as $achat)
-        <strong> Achat numéro {{$achat ->id}}</strong>
-        <h2> Pour voiture numéro {{ $achat->id_voiture }}</h2>
-     <div class="buttons">
-     <form action="{{ url('achats/'. $achat->id) }}" method="POST" style="display: inline">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Supprimer</button>
-    </form>
-</div>
-    @endforeach
- {{-- Formulaire d'ajout d'achats --}}
 
-<h4> Ajouter un achat:</h4>
-
-  {{-- <form action="{{ url(url('voitures/'. $voiture->id). '/achats') }}" method="POST" enctype="multipart/form-data">  --}}
-    <form action="{{route('achats.store')}}" method="POST" enctype="multipart/form-data"> 
-  
-        @csrf
-        <div class="form-group mb-3">
-
-            <label for="id_utilisateur">Écrivez votre user id:</label>
-            <textarea name="id_utilisateur" id="id_utilisateur" cols="30" rows="10" class="form-control"></textarea>
-         
-            <input type="hidden" name="id_voiture" value="{{ $voiture->id}}" /><br /> 
-            {{-- <input type="hidden" value="{{ $voiture->id}}">{{ $voiture->id }}/><br /> --}}
-          </div>
-
-        <button type="submit" class="btn btn-primary">acheter</button>
-        @if ('success')
-            <h6 class="alert alert-warning mb-3">{{'success'}}</h6>
-        @endif
-    </form>
-@endsection
+@endsection 

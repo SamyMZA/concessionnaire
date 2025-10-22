@@ -13,11 +13,11 @@ class Achat extends Model
 
     public function utilisateur(): mixed
     {
-        return $this ->belongTo(Utilisateur::class);
+        return $this ->belongsTo(Utilisateur::class);
     }
 
     public function voiture(): mixed
     {
-        return $this ->belongTo(Voiture::class);
+        return $this ->belongsTo(Voiture::class);
     }
 }

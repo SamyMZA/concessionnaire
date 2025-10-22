@@ -1,5 +1,6 @@
+@php $locale = session()->get('locale'); @endphp
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -27,16 +28,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
-
-    <div class="nav">
-        <h1>Concessionnaire</h1>
+    <div id="app">
+        <div class="nav">
+            <h1>@lang("concessionnaire")</h1>
+        </div>
+            {{-- Section multilingue --}}
+            <ul class="navbar-nav ms-auto">
+                @php $locale = session()->get('locale'); @endphp
+                <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    @switch($locale)
+                    @case('en')
+                    <img src="{{asset('images/flag/en.png')}}" width="25px"> English
+                    @break
+                    @case('fr')
+                    <img src="{{asset('images/flag/fr.png')}}" width="25px"> Français
+                    @break
+                    @default
+                    <img src="{{asset('images/flag/en.png')}}" width="25px"> English
+                    @endswitch
+                    <span class="caret"></span>
+                </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="lang/en"><img src="{{asset('images/flag/en.png')}}" width="25px"> English</a>
+        <a class="dropdown-item" href="lang/fr"><img src="{{asset('images/flag/fr.png')}}" width="25px"> Français</a>
     </div>
+</li>
+            </ul>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
+        <script src="{{ asset('vendor/jquery-ui/jquery-ui.js') }}"></script>
     </div>
-    <script src="{{ asset('vendor/jquery-ui/jquery-ui.js') }}"></script>
-
 </body>
 </html>

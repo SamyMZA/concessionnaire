@@ -1,54 +1,39 @@
+
 @extends('layouts.app')
-  
+
+    
 @section('content')
 
-    <div class="row">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <div class="col-lg-10">
-            <h2>Liste des voitures</h2>
+    <div class="container">
+        <div class="row1">
+            <h2>@lang("general.liste voitures")</h2>
+            <a href="{{ url('voitures/create') }}">@lang("general.ajouter voiture")</a>
         </div>
+    
+        <a href="{{ route('achats.index') }}">@lang("general.liste achats")</a>
+        
+        <div class="row2">
+            @foreach ($voitures as $index => $voiture)
+                @if ($voiture->dispo == 1)
+                    <div class="cardVoiture">
+                        <a href="{{ url('voitures/'. $voiture->id) }}"><h2>
+                            @if ($voiture->img)
+                                <img height="200px" width="300px" src="{{ asset('storage/images/upload/'.$voiture->img) }}" >
+                            @endif
+                        </h2></a>
+                        
+                        <p>{{ $voiture->marque }}</p>
+                        <p>{{ $voiture->modele }}</p>
+                        <p>{{ $voiture->prix }} $</p>
 
-        <div class="col-lg-2">
-            <a class="btn btn-success" href="{{ url('voitures/create') }}">Ajouter une voitures</a>
+                    </div>  
+                @endif
+            @endforeach
         </div>
-
+        
     </div>
-
-
-
-    @if ($message = Session::get('success'))
-
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-
-    @endif
-
-
-
-<div class="container">
-
-    <div class="row">
-        @foreach ($voitures as $index => $voiture)
-        <div class="col-md-4">
-            <div class="card card-body">
-            {{-- @if ($voiture->img)
-               <img src="../images/upload/{{$voiture->img}}"width="200px" height="100px"> >
-            @endif --}}
-                <a href="{{ url('voitures/'. $voiture->id) }}">
-                <h2>
-                        {{ $voiture->marque }}
-                    </h2>
-                   
-                </a>
-                {{ $voiture->modele }}
-                          
-            <a href="{{ url('voitures/'. $voiture->id) }}" class="btn btn-outline-primary">En savoir plus</a>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div>
 
 
 @endsection 
