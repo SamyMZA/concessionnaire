@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route:: get ('/', [VoitureController::class, 'index']);
 Route::post('/autocomplete', [VoitureController::class,'autocomplete'])->name('autocomplete');
+Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+
 
 Route::resources([
                  'voitures'=> VoitureController::class,

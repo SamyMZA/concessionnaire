@@ -18,11 +18,11 @@
             @foreach ($voitures as $index => $voiture)
                 @if ($voiture->dispo == 1)
                     <div class="cardVoiture">
-                        <a href="{{ url('voitures/'. $voiture->id) }}"><h2>
+                        <a href="{{ url('voitures/'. $voiture->id) }}">
                             @if ($voiture->img)
                                 <img height="200px" width="300px" src="{{ asset('storage/images/upload/'.$voiture->img) }}" >
                             @endif
-
+                        </a>
                         <p>{{ $voiture->marque }}</p>
                         <p>{{ $voiture->modele }}</p>
                         <p>{{ $voiture->prix }} $</p>

@@ -1,6 +1,9 @@
 
 @extends('layouts.app')
-    
+@php $locale = session()->get('locale'); @endphp
+
+<html lang="fr">
+
 @section('content')
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
