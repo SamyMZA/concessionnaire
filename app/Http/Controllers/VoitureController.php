@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Voiture;
 use Illuminate\Support\Facades\Storage;

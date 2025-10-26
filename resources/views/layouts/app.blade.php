@@ -27,10 +27,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
 </head>
 <body>
 
@@ -42,13 +38,13 @@
         <form>
             @csrf
             <div class="form-group">
-                <input type="text" class="typeahead form-control"  id = "article_search" placeholder = "Rechercher..." > 
+                <input type="text" class="typeahead form-control"  id = "voiture_search" placeholder = "Rechercher..." > 
             </div>
         </form>
         <script type="text/javascript">
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $(document ).ready(function(){
-            $('#article_search').autocomplete({  
+            $('#voiture_search').autocomplete({  
                 source:function( request, response ) {
                 $.ajax({
                 url:"{{route('autocomplete')}}",
@@ -64,9 +60,11 @@
                     }); 
                 },
                 select: function (event, ui) {
-                $('#article_search').val(ui.item.label);
-            
-            return false;
+                $('#voiture_search').val(ui.item.label);
+
+                window.location.href = "/voitures/" + ui.item.valeur;
+
+                return false;
                 }
             });
                 });
