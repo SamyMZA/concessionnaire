@@ -8,11 +8,11 @@
 
     <div class="container">
         <div class="row1">
-            <h2>Liste des voitures</h2>
-            <a href="{{ url('voitures/create') }}">Ajouter une voiture</a>
+            <h2>@lang("general.liste voitures")</h2>
+            <a href="{{ url('voitures/create') }}">@lang("general.ajouter voiture")</a>
         </div>
     
-        <a href="{{ route("achats.index") }}">Liste des achats</a>
+        <a href="{{ route('achats.index') }}">@lang("general.liste achats")</a>
         
         <div class="row2">
             @foreach ($voitures as $index => $voiture)
@@ -23,7 +23,6 @@
                                 <img height="200px" width="300px" src="{{ asset('storage/images/upload/'.$voiture->img) }}" >
                             @endif
 
-                        </h2></a>
                         <p>{{ $voiture->marque }}</p>
                         <p>{{ $voiture->modele }}</p>
                         <p>{{ $voiture->prix }} $</p>
