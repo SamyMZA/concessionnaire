@@ -46,34 +46,41 @@
                 <input type="text" class="typeahead form-control" id="voiture_search" placeholder="Rechercher...">
             </div>
         </form>
-        <script type="text/javascript">
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $(document).ready(function() {
-                $('#voiture_search').autocomplete({
-                    source: function(request, response) {
-                        $.ajax({
-                            url: "{{route('autocomplete')}}",
-                            type: 'POST',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term
-                            },
-                            success: function(data) {
-                                response(data);
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        $('#voiture_search').val(ui.item.label);
-
-                        window.location.href = "/voitures/" + ui.item.valeur;
-
-                        return false;
-                    }
+        <a class="navbar-brand" href="{{ route('home') }}"> Accueil</a>
+        @if (Auth::user())
+        @if (Auth::user()->role === 'USER')
+        <a class="navbar-brand" href=>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                {{ config('app.name') }}
+            </a>
+            @endif
+            @endif
+            <script type="text/javascript">
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                $(document).ready(function() {
+                    $('#voiture_search').autocomplete({
+                        source: function(request, response) {
+                            $.ajax({
+                                url: "{{route('autocomplete')}}",
+                                type: 'POST',
+                                dataType: "json",
+                                data: {
+                                    _token: CSRF_TOKEN,
+                                    search: request.term
+                                },
+                                success: function(data) {
+                                    response(data);
+                                }
+                            });
+                        },
+                        select: function(event, ui) {
+                            $('#voiture_search').val(ui.item.label);
+                            
+                            return false;
+                        }
+                    });
                 });
-            });
-        </script>
+            </script>
     </div>
     {{-- Section multilingue --}}
     <ul class="navbar-nav ms-auto">
@@ -98,7 +105,40 @@
             </div>
         </li>
     </ul>
+    <ul class="navbar-nav ms-auto">
+        <!-- Authentication Links -->
 
+        @if (Auth::user()) {{-- accées au boutons d"enregistrement de connéexion et de déconnexion peu importe le rôle de l'utilisateur authentifié --}}
+        @if (Auth::user()->role === 'ADMIN')
+        {{-- Accées à l'espace admin Juste pour les ADMIN --}}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('articles.index') }}"> Espace Admin</a>
+        </li>
+        @endif
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }}
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </li>
+        @else
+        <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
+        <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
+
+        @endif
+    </ul>
     <main class="py-4">
         @yield('content')
     </main>

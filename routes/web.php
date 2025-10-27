@@ -3,6 +3,7 @@
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\VoitureController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,7 @@ Route::resources([
                  'voitures'=> VoitureController::class,
                  'achats'=> AchatController::class,
                 ]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
