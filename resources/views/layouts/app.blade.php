@@ -112,7 +112,7 @@
         @if (Auth::user()->role === 'ADMIN')
         {{-- Accées à l'espace admin Juste pour les ADMIN --}}
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('articles.index') }}"> Espace Admin</a>
+            <a class="nav-link" href="{{ route('voitures.index') }}"> Espace Admin</a>
         </li>
         @endif
         <li class="nav-item dropdown">

@@ -7,10 +7,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <div class="container">
+        @if (Auth::user() && Auth::user()->role === 'ADMIN')
         <div class="row1">
             <h2>@lang("general.liste voitures")</h2>
             <a href="{{ url('voitures/create') }}">@lang("general.ajouter voiture")</a>
         </div>
+        @endif
     
         <a href="{{ route('achats.index') }}">@lang("general.liste achats")</a>
         
