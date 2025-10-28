@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route:: get ('/', [VoitureController::class, 'index']);
 Route::post('/autocomplete', [VoitureController::class,'autocomplete'])->name('autocomplete');
-Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
 
 Route::controller(VoitureController::class)->group(function () {
     Route::get('/voitures/{id}', 'show');

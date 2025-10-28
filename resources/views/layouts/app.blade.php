@@ -75,7 +75,7 @@
                         },
                         select: function(event, ui) {
                             $('#voiture_search').val(ui.item.label);
-                            
+
                             return false;
                         }
                     });
@@ -86,7 +86,8 @@
     <ul class="navbar-nav ms-auto">
         @php $locale = session()->get('locale'); @endphp
         <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 @switch($locale)
                 @case('en')
                 <img src="{{asset('images/flag/en.png')}}" width="25px"> English
@@ -100,10 +101,13 @@
                 <span class="caret"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="lang/en"><img src="{{asset('images/flag/en.png')}}" width="25px"> English</a>
-                <a class="dropdown-item" href="lang/fr"><img src="{{asset('images/flag/fr.png')}}" width="25px"> Français</a>
+                <a class="dropdown-item" href="/lang/en"><img src="{{asset('images/flag/en.png')}}" width="25px"> English</a>
+                <a class="dropdown-item" href="/lang/fr"><img src="{{asset('images/flag/fr.png')}}" width="25px"> Français</a>
             </div>
         </li>
+        {{-- fin du bloc multilingue --}}
+        <a class="navbar-brand" href="{{ url('/monopage') }}">@lang('general.Monopage') </a>
+        <a class="navbar-brand" href="{{ url('/apropos') }}">@lang('general.A propos')</a>
     </ul>
     <ul class="navbar-nav ms-auto">
         <!-- Authentication Links -->
@@ -143,8 +147,10 @@
         @yield('content')
     </main>
     </div>
-    <script src="{{ asset('vendor/jquery-ui/jquery-ui.js') }}"></script>
-
+    <!-- <script src="{{ asset('vendor/jquery-ui/jquery-ui.js') }}"></script> -->
+    <div class="text-center footer">
+        <h6>Concessionaire Auto<br>@ 2025 Samy Ulysse</h6>
+    </div>
 </body>
 
 </html>
