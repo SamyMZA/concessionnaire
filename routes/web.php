@@ -5,6 +5,7 @@ use App\Http\Controllers\VoitureController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,5 +58,5 @@ Route:: get ('/admin/voitures/create', [VoitureController::class, 'create'])->mi
 Route:: post ('/admin/voitures/store', [VoitureController::class, 'store'])->middleware('admin')->name('voitures.store'); 
 Route:: get ('/admin/voitures/{id}', [VoitureController::class, 'show'])->middleware('admin')->name('voitures.show'); 
 Route:: get ('/admin/voitures/{id}/edit', [VoitureController::class, 'edit'])->middleware('admin')->name('voitures.edit'); 
-Route:: patch ('/admin/voitures/{id}/update', [VoitureController::class, 'update'])->middleware('admin')->name('voitures.update'); 
+Route:: patch ('/admin/voitures/{voiture}/update', [VoitureController::class, 'update'])->middleware('admin')->name('voitures.update'); 
 Route:: delete ('/admin/voitures/{id}', [VoitureController::class, 'destroy'])->middleware('admin')->name('voitures.destroy'); 

@@ -124,18 +124,14 @@ class VoitureController extends Controller
             
             $image = $request->file('img');
             $fileName = time().'.'.$image->getClientOriginalExtension();
-            
             $image->storeAs('public/images/upload/', $fileName);
-
             $voiture->img = $fileName;
         }
 
-        $voiture->save([
-            'marque'=> $request->input('marque'),
-            'modele'=> $request->input('modele'),
-            'prix'=> $request->input('prix'),
-            'img'=> $fileName, 
-        ]); 
+        $voiture->marque = $request->input('marque');
+        $voiture->modele = $request->input('modele');
+        $voiture->prix = $request->input('prix');
+
         $voiture->update();       
         return redirect('/')->with( 'success', 'voiture Ajouté avec succès');
         

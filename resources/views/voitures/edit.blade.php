@@ -11,7 +11,7 @@
     <div class="row">
         <h2>@lang("general.modifier une voiture")</h2>
 
-        <form method="POST" action="{{ url('voitures/'. $voiture->id) }}"  enctype="multipart/form-data" >
+        <form method="POST" action="{{ url('admin/voitures/'. $voiture->id). '/update' }}"  enctype="multipart/form-data" >
             @method('PATCH')
             @csrf
             <p>Marque :</p> <input type="text" id="marque" name="marque" value="{{ $voiture->marque }}">

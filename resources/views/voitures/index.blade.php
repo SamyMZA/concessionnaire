@@ -10,7 +10,7 @@
         @if (Auth::user() && Auth::user()->role === 'ADMIN')
         <div class="row1">
             <h2>@lang("general.liste voitures")</h2>
-            <a href="{{ url('voitures/create') }}">@lang("general.ajouter voiture")</a>
+            <a href="{{ url('admin/voitures/create') }}">@lang("general.ajouter voiture")</a>
         </div>
         @endif
     

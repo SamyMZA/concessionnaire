@@ -19,9 +19,9 @@
         </div>
 
         @if (Auth::user() && Auth::user()->role === 'ADMIN')
-        <a href="{{ url('voitures/'. $voiture->id . '/edit') }}">@lang("general.modifier")</a>
+        <a href="{{ url('admin/voitures/'. $voiture->id . '/edit') }}">@lang("general.modifier")</a>
 
-            <form method="post" action="{{ url('voitures/'. $voiture->id) }}" >
+            <form method="post" action="{{ url('admin/voitures/'. $voiture->id) }}" >
             @csrf
             @method('DELETE')
                 <button type="submit">@lang("general.supprimer")</button>
