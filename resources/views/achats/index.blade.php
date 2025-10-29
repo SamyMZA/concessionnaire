@@ -8,7 +8,7 @@
 
     <div class="container">
         <div class="row1">
-            <h2>Liste des achats</h2>
+            <h2>@lang('general.liste voitures')</h2>
         </div>
 
         

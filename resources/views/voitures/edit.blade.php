@@ -14,10 +14,10 @@
         <form method="POST" action="{{ url('admin/voitures/'. $voiture->id). '/update' }}"  enctype="multipart/form-data" >
             @method('PATCH')
             @csrf
-            <p>Marque :</p> <input type="text" id="marque" name="marque" value="{{ $voiture->marque }}">
-            <p>Modele :</p> <input type="text" id="modele" name="modele" value="{{ $voiture->modele }}">
-            <p>Prix :</p> <input type="text" id="prix" name="prix" value="{{ $voiture->prix }}">
-            <p>Image:</p> <input type = "file" name= "img"  id = "img"  accept="image/*">
+            <p>@lang('general.marque') :</p> <input type="text" id="marque" name="marque" value="{{ $voiture->marque }}">
+            <p>@lang('general.modele') :</p> <input type="text" id="modele" name="modele" value="{{ $voiture->modele }}">
+            <p>@lang('general.prix') :</p> <input type="text" id="prix" name="prix" value="{{ $voiture->prix }}">
+            <p>image:</p> <input type = "file" name= "img"  id = "img"  accept="image/*">
             <button type="submit">@lang("general.modifier")</button>
         </form>
         <a href="{{ url('voitures/'.$voiture->id) }}">@lang("general.retour")</a>

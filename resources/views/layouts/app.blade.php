@@ -46,7 +46,7 @@
                 <input type="text" class="typeahead form-control" id="voiture_search" placeholder="Rechercher...">
             </div>
         </form>
-        <a class="navbar-brand" href="{{ route('home') }}"> Accueil</a>
+        <a class="navbar-brand" href="{{ route('home') }}"> @lang("general.accueil ac") </a>
         @if (Auth::user())
         @if (Auth::user()->role === 'USER')
         <a class="navbar-brand" href=>
@@ -95,6 +95,9 @@
                 @case('fr')
                 <img src="{{asset('images/flag/fr.png')}}" width="25px"> Français
                 @break
+                @case('es')
+                <img src="{{asset('images/flag/es.png')}}" width="25px"> Espagnol
+                @break
                 @default
                 <img src="{{asset('images/flag/en.png')}}" width="25px"> English
                 @endswitch
@@ -103,6 +106,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/lang/en"><img src="{{asset('images/flag/en.png')}}" width="25px"> English</a>
                 <a class="dropdown-item" href="/lang/fr"><img src="{{asset('images/flag/fr.png')}}" width="25px"> Français</a>
+                <a class="dropdown-item" href="/lang/es"><img src="{{asset('images/flag/es.png')}}" width="25px"> Espagnol</a>
             </div>
         </li>
         {{-- fin du bloc multilingue --}}
@@ -116,7 +120,7 @@
         @if (Auth::user()->role === 'ADMIN')
         {{-- Accées à l'espace admin Juste pour les ADMIN --}}
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('voitures.index') }}"> Espace Admin</a>
+            <a class="nav-link" href="{{ route('voitures.index') }}"> @lang('general.espace admin')</a>
         </li>
         @endif
         <li class="nav-item dropdown">

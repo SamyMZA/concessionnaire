@@ -28,5 +28,11 @@ return [
     'prix' => 'price',
     'retour' => 'back',
     'achateurs' => 'has bought a',
-    'ajouter' => 'ajouter'
+    'ajouter' => 'add',
+    'accueil ac' => 'Home',
+    'espace admin' => 'Admin Space',
+    'A propos' => 'general about',
+    'Monopage' => 'general monopage'
+
+    
 ];
