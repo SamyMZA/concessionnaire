@@ -17,7 +17,7 @@ class CreateAchatsTable extends Migration
             $table->id();
             $table->foreignId('id_utilisateur')
             ->references('id')
-            ->on('utilisateurs')
+            ->on('users')
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->foreignId('id_voiture')

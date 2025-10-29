@@ -50,7 +50,6 @@ class AchatController extends Controller
 
             $achat = Achat::create($request->all());
 
-
             $voiture = $achat->voiture; // relation Eloquent
             $voiture->dispo = 0;
             $voiture->save();
