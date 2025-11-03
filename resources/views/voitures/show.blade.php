@@ -18,14 +18,15 @@
             <p>{{ $voiture->prix }} $</p>
         </div>
 
-        <a href="{{ url('voitures/'. $voiture->id . '/edit') }}">@lang("general.modifier")</a>
+        @if (Auth::user() && Auth::user()->role === 'ADMIN')
+        <a href="{{ url('admin/voitures/'. $voiture->id . '/edit') }}">@lang("general.modifier")</a>
 
-            <form method="post" action="{{ url('voitures/'. $voiture->id) }}" >
+            <form method="post" action="{{ url('admin/voitures/'. $voiture->id) }}" >
             @csrf
             @method('DELETE')
                 <button type="submit">@lang("general.supprimer")</button>
            </form>
-
+        @endif
 
             <form action="{{ route('achats.store') }}" method="POST" enctype="multipart/form-data">
             @csrf

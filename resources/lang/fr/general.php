@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'concessionnare' => 'Concessionnaire',
+    'conce-ssionnare' => 'Concessionnaire',
     'liste voitures' => 'Liste des voitures',
     'ajouter voiture' => 'Ajouter une voiture',
     'liste achats' => 'Liste des achats',
@@ -28,5 +28,12 @@ return [
     'prix' => 'prix',
     'retour' => 'retour',
     'achateurs' => 'a acheté(e) une',
-    'ajouter' => 'ajouter'
+    'ajouter' => 'ajouter',
+    'accueil ac' => 'Accueil',
+    'espace admin' => 'Espace administrateur',
+    'A propos' => 'À propos',
+    'Monopage' => 'Monopage',
+
+
+
 ];

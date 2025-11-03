@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\VoitureController;
+use App\Http\Controllers\Api\BaseController;
+use App\Http\Controllers\Api\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +16,20 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//Route::apiResource('/voitures',VoitureController::class);
+
+Route::post('register',[RegisterController::class, 'register']);
+Route::post('login',[RegisterController::class, 'login']);
+Route::get('/voitures',[VoitureController::class, 'index']);
+Route::get('/voitures/{id}',[VoitureController::class, 'show']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('voitures/',[VoitureController::class, 'store']);
+    Route::get('voitures/edit/{id}',[VoitureController::class, 'edit']);
+    Route::put('voitures/update/{id}',[VoitureController::class, 'update']);
+    Route::delete('voitures/{id}',[VoitureController::class, 'destroy']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
