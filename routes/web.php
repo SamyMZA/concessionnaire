@@ -61,11 +61,17 @@ Route::post('/email/verification-notification', function(Request $request){
 })->middleware(['auth','throttle:6,1'])->name('verification.send');
 
 
-Route:: get ('/admin/voitures', [VoitureController::class, 'index'])->middleware('admin')->name('voitures.index');
+    // Route:: post ('voitures/', [VoitureController::class, 'store']); 
+    // Route:: get ('voitures/{id}/edit', [VoitureController::class, 'edit']); 
+    // Route:: patch ('voitures/{voiture}/update', [VoitureController::class, 'update']); 
+    // Route:: delete ('voitures/{id}', [VoitureController::class, 'destroy']); 
 
-Route:: get ('/admin/voitures/create', [VoitureController::class, 'create'])->middleware('admin')->name('voitures.create');
-Route:: post ('/admin/voitures/store', [VoitureController::class, 'store'])->middleware('admin')->name('voitures.store'); 
-Route:: get ('/admin/voitures/{id}', [VoitureController::class, 'show'])->middleware('admin')->name('voitures.show'); 
-Route:: get ('/admin/voitures/{id}/edit', [VoitureController::class, 'edit'])->middleware('admin')->name('voitures.edit'); 
-Route:: patch ('/admin/voitures/{voiture}/update', [VoitureController::class, 'update'])->middleware('admin')->name('voitures.update'); 
-Route:: delete ('/admin/voitures/{id}', [VoitureController::class, 'destroy'])->middleware('admin')->name('voitures.destroy'); 
+
+// Route:: get ('/admin/voitures', [VoitureController::class, 'index'])->middleware('admin')->name('voitures.index');
+
+// Route:: get ('/admin/voitures/create', [VoitureController::class, 'create'])->middleware('admin')->name('voitures.create');
+// Route:: post ('/admin/voitures/store', [VoitureController::class, 'store'])->middleware('admin')->name('voitures.store'); 
+// Route:: get ('/admin/voitures/{id}', [VoitureController::class, 'show'])->middleware('admin')->name('voitures.show'); 
+// Route:: get ('/admin/voitures/{id}/edit', [VoitureController::class, 'edit'])->middleware('admin')->name('voitures.edit'); 
+// Route:: patch ('/admin/voitures/{voiture}/update', [VoitureController::class, 'update'])->middleware('admin')->name('voitures.update'); 
+// Route:: delete ('/admin/voitures/{id}', [VoitureController::class, 'destroy'])->middleware('admin')->name('voitures.destroy'); 
