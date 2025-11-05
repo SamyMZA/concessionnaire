@@ -20,6 +20,9 @@
                         <h3>[<a href="Utilisateurs/index">Se connecter</a>] <small>(admin/admin)</small></h3>
                 <?php endif; ?>
             </header>
+            <a href="tests.php">
+                <h3>tests</h3>
+            </a>
             <a href="Apropos">
                 <h4>À propos</h4>
             </a>
