@@ -26,8 +26,8 @@ Route::get('/voitures/{id}',[VoitureController::class, 'show']);
 Route::middleware('auth:sanctum')->group(function() {
     
     Route:: post ('voitures/', [VoitureController::class, 'store']); 
-    Route:: get ('voitures/{id}/edit', [VoitureController::class, 'edit']); 
-    Route:: patch ('voitures/{voiture}/update', [VoitureController::class, 'update']); 
+    Route:: get ('voitures/edit/{id}', [VoitureController::class, 'edit']); 
+    Route:: patch ('voitures/update/{id}', [VoitureController::class, 'update']); 
     Route:: delete ('voitures/{id}', [VoitureController::class, 'destroy']); 
     
 });

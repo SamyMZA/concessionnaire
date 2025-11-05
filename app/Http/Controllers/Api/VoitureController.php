@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class VoitureController extends Controller
 {
@@ -76,9 +77,12 @@ class VoitureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $voiture)
+    public function update(Request $request, $id)
     {
-  {
+        {
+
+        $voiture = Voiture::findOrFail($id);
+
         $validator = Validator::make($request->all(),[
             'marque' => 'required',
             'modele' => 'required',
