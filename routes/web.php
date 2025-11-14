@@ -21,11 +21,14 @@ use Illuminate\Http\Request;
 Route::get('/apropos', function () {
     return view('apropos')->with('message', 'page à propos pour le test');
 }); 
-Route::get('monopage', function () {
+/**Route::get('monopage', function () {
     return view('monopage');   
-}); 
+}); */
 
 
+Route::get('{any}', function() {
+    return view('monopage');
+})->where('any','.*');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route:: get ('/', [VoitureController::class, 'index']);
