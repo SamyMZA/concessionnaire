@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Voiture;
-//use App\Http\Controllers\Controller;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -133,5 +132,11 @@ class VoitureController extends Controller
             return response()->json(["message" => "Voiture modifé avec succée" ] );
         } 
         
+    }
+
+    public function autocomplete(Request $request){
+        $query = $request->input('query');
+        $voitures = Voiture::where('marque', 'LIKE', "%{$query}%")->limit(10)->get();
+        return response()->json($voitures);
     }
 }

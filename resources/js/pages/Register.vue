@@ -149,50 +149,52 @@ onBeforeUnmount(() => {
     }
 });
 
-error.value = null;
-if (!recaptchaToken.value) {
-    error.value = 'Merci de confirmer que vous n\'êtes pas un robot.';
-    return;
-}
+async function handleRegister() {
+    error.value = null;
+    if (!recaptchaToken.value) {
+        error.value = 'Merci de confirmer que vous n\'êtes pas un robot.';
+        return;
+    }
 
-export default {
-    data() {
-        return {
-            name: "",
-            email: "",
-            password: "",
-            c_password: "",
-            error: null,
-        };
-    },
-    methods: {
-        async handleSubmit() {
-            this.error = null;
+    loading.value = true;
+    try {
+        // Option : get CSRF cookie for sanctum if using cookie auth
+        await api.get('/sanctum/csrf-cookie');
 
-            try {
-                await axios.get("/sanctum/csrf-cookie");
+        const res = await api.post('/register', {
+            name: name.value,
+            email: email.value,
+            password: password.value,
+            c_password: c_password.value,
+            'g-recaptcha-response': recaptchaToken.value
+        });
 
-                const res = await axios.post("/api/register", {
-                    name: this.name,
-                    email: this.email,
-                    password: this.password,
-                    c_password: this.c_password,
-                });
-
-                if (res.data.success) {
-                    this.$router.push("/login");
-                }
-            } catch (err) {
-                if (err.response && err.response.status === 422) {
-                    // Laravel validation errors
-                    this.error = Object.values(err.response.data.errors)
-                        .flat()
-                        .join(" ");
-                } else {
-                    this.error = "Erreur lors de l'inscription";
-                }
+        if (res.data.success) {
+            // stockage token si tu veux (si renvoyé)
+            if (res.data.data?.token) {
+                localStorage.setItem('token', res.data.data.token);
+                router.push("/login");
             }
-        },
-    },
-};
+
+        } else {
+            error.value = res.data.message || 'Erreur inscription';
+        }
+    } catch (err) {
+        if (err.response?.status === 422) {
+            // validation errors
+            const errors = err.response.data.errors || {};
+            error.value = Object.values(errors).flat().join(' ');
+        } else {
+            error.value = 'Erreur lors de la requête';
+            console.log('Réponse:', err.response?.data || err.message);
+        }
+    } finally {
+        loading.value = false;
+        // reset recaptcha widget to allow a new token next time
+        if (window.grecaptcha && recaptchaWidgetId.value !== null) {
+            window.grecaptcha.reset(recaptchaWidgetId.value);
+            recaptchaToken.value = null;
+        }
+    }
+}
 </script>

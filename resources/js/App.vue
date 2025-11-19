@@ -55,6 +55,9 @@
                     <router-link to="/register" class="nav-item nav-link">Register </router-link> -->
                 </div>
             </div>
+            <div>
+                <SearchBar />
+            </div>
         </nav>
         <br />
         <router-view />
