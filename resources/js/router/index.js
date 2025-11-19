@@ -1,11 +1,8 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createWebHistory, createRouter } from "vue-router";
 
 import Home from '../pages/Home.vue';
 import Dashboard from '../pages/Dashboard.vue';
 import Voitures from '../components/Voitures.vue';
-
-Vue.use(VueRouter);
 
 const routes = [
     {
@@ -25,15 +22,16 @@ const routes = [
     }
 ];
 
-const router = new VueRouter({
-    mode: 'history',
-    routes
+const router = createRouter({
+    history: createWebHistory(),
+    routes: routes,
 });
+
 
 router.beforeEach((to, from, next) => {
     const token = localStorage.getItem('token');
     if (to.meta.requiresAuth && !token) {
-        next({ name: 'home' }); // redirige vers la page d’accueil ou login
+        next({ name: '/login' }); // redirige vers la page d’accueil ou login
     } else {
         next();
     }

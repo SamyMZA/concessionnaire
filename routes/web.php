@@ -26,6 +26,12 @@ Route::get('monopage', function () {
 }); 
 
 
+<<<<<<< Updated upstream
+=======
+Route::get('{any}', function() {
+    return view('concessionnaire');
+})->where('any','.*');
+>>>>>>> Stashed changes
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route:: get ('/', [VoitureController::class, 'index']);
@@ -37,8 +43,8 @@ Route::controller(VoitureController::class)->group(function () {
 });
 
 Route::resources([
-                //  'voitures'=> VoitureController::class,
-                 'achats'=> AchatController::class,
+                 'voitures'=> VoitureController::class,
+                //  'achats'=> AchatController::class,
                 ]);
 
 Auth::routes();
