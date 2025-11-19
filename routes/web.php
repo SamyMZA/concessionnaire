@@ -21,11 +21,14 @@ use Illuminate\Http\Request;
 Route::get('/apropos', function () {
     return view('apropos')->with('message', 'page à propos pour le test');
 }); 
-Route::get('monopage', function () {
+/**Route::get('monopage', function () {
     return view('monopage');   
-}); 
+}); */
 
 
+Route::get('{any}', function() {
+    return view('monopage');
+})->where('any','.*');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route:: get ('/', [VoitureController::class, 'index']);
@@ -59,12 +62,6 @@ Route::post('/email/verification-notification', function(Request $request){
 
     return back()->with('message','Verification link sent!');
 })->middleware(['auth','throttle:6,1'])->name('verification.send');
-
-
-    // Route:: post ('voitures/', [VoitureController::class, 'store']); 
-    // Route:: get ('voitures/{id}/edit', [VoitureController::class, 'edit']); 
-    // Route:: patch ('voitures/{voiture}/update', [VoitureController::class, 'update']); 
-    // Route:: delete ('voitures/{id}', [VoitureController::class, 'destroy']); 
 
 
 Route:: get ('/admin/voitures', [VoitureController::class, 'index'])->middleware('admin')->name('voitures.index');
