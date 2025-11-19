@@ -79,6 +79,14 @@
                             <br />
 
                             <div class="form-group row">
+                                <!-- widget container -->
+                                <div
+                                    ref="recaptchaWrapper"
+                                    class="col-md-6"
+                                ></div>
+                            </div>
+
+                            <div class="form-group row">
                                 <div class="col-md-8 offset-md-4">
                                     <button class="btn btn-primary">
                                         Register
@@ -94,6 +102,59 @@
 </template>
 
 <script>
+const name = ref("");
+const email = ref("");
+const password = ref("");
+const c_password = ref("");
+const error = ref(null);
+const loading = ref(false);
+
+const recaptchaWidgetId = ref(null);
+const recaptchaToken = ref(null);
+const recaptchaWrapper = ref(null);
+
+const SITE_KEY =
+    process.env.MIX_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY || "";
+
+function renderRecaptcha() {
+    if (!window.grecaptcha || !recaptchaWrapper.value) return;
+    if(recaptchaWidgetId.value !== null) {
+        try { window.grecaptcha.reset(recaptchaWidgetId.value); catch { }
+        return;
+    }
+    recaptchaWidgetId.value = window.grecaptcha.render(recaptchaWrapper.value, {
+        'sitekey':SITE_KEY, 'callback': (token) => {
+            recaptchaToken.value = token;
+        },
+        'expired-callback':() => { recaptchaToken.value = null; }
+    });
+}
+
+onMounted(() => {
+    let tries = 0;
+    const interval = setInterval(() => {
+        if (window.grecaptcha && window.grecaptcha.render) {
+            renderRecaptcha();
+            clearInterval(interval);
+        } else if (tries++ > 20) {
+            clearInterval(interval);
+            console.warn('reCAPTCHA not loaded');
+        }
+    }, 300);
+});
+
+onBeforeUnmount(() => {
+    if (recaptchaWidgetId.value !== null && window.grecaptcha && window.grecaptcha.reset) {
+        window.grecaptcha.reset(recaptchaWidgetId.value);
+    }
+});
+
+error.value = null;
+if (!recaptchaToken.value) {
+    error.value = 'Merci de confirmer que vous n\'êtes pas un robot.';
+    return;
+}
+
 export default {
     data() {
         return {

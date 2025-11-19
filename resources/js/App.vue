@@ -1,4 +1,4 @@
-<!-- À modifier -->
+<!-- À modifier* -->
 <template>
     <div class="container">
         <div
@@ -28,8 +28,8 @@
                     <router-link to="/dashboard" class="nav-item nav-link"
                         >Dashboard</router-link
                     >
-                    <router-link to="/articles" class="nav-item nav-link"
-                        >Articles</router-link
+                    <router-link to="/voitures" class="nav-item nav-link"
+                        >Voitures</router-link
                     >
                     <a
                         class="nav-item nav-link"
@@ -47,8 +47,8 @@
                     <router-link to="/" class="nav-item nav-link"
                         >Home</router-link
                     >
-                    <router-link to="/articles" class="nav-item nav-link"
-                        >Articles</router-link
+                    <router-link to="/voitures" class="nav-item nav-link"
+                        >Voitures</router-link
                     >
                     <!--   <router-link to="/about" class="nav-item nav-link">About</router-link>
                     <router-link to="/login" class="nav-item nav-link">login</router-link>
@@ -63,7 +63,7 @@
             <div class="container">
                 <h6>Site monopage créé avec Laravel 8 et Vue js</h6>
                 <h6>Cours: Applications Web trensactionnelles</h6>
-                <h6>Crée par: Ouiza Ouyed</h6>
+                <h6>Crée par: Marshlee et Samy</h6>
             </div>
         </footer>
     </div>
@@ -91,7 +91,7 @@ export default {
                     .post("/api/logout")
                     .then((response) => {
                         if (response.data.success) {
-                            window.location.href = "/articles";
+                            window.location.href = "/voitures";
                         } else {
                             console.log(response);
                         }
