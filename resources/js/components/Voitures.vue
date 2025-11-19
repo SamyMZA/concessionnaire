@@ -4,6 +4,11 @@
         <br />
 
         <!-- Version alternative : toujours visible, redirige vers login si non connecté -->
+
+        <router-link v-if="isLoggedIn" :to="{ name: 'addvoiture' }" class="btn btn-primary">
+            Ajouter
+        </router-link>
+
         <button v-else @click="goAdd" class="btn btn-primary">Ajouter</button>
 
         <table class="table table-bordered mt-3">
@@ -12,6 +17,7 @@
                     <th scope="col" class="text-center">Image</th>
                     <th scope="col" class="text-center">Marque</th>
                     <th scope="col" class="text-center">Modele</th>
+                    <th scope="col" class="text-center">Prix</th>
                     <th scope="col" class="text-center">Actions</th>
                 </tr>
             </thead>
@@ -30,6 +36,9 @@
                     </td>
                     <td style="text-align: center; vertical-align: middle">
                         {{ voiture.modele }}
+                    </td>
+                    <td style="text-align: center; vertical-align: middle">
+                        {{ voiture.prix }} $
                     </td>
                     <td>
                         <div style="text-align: center; vertical-align: middle">
@@ -90,7 +99,7 @@ export default {
             }
         },
 
-        /*  goAdd() {
+        goAdd() {
              // Si pas connecté -> redirection vers la page de login
              if (!this.isLoggedIn) {
                  // Utilise le nom de route 'login' si tu l'as défini, sinon chemin '/login'
@@ -99,7 +108,7 @@ export default {
              }
              // sinon rediriger vers addvoiture (nom de route)
              this.$router.push({ name: 'addvoiture' }).catch(() => { this.$router.push('/add') });
-         }, */
+         }, 
 
         checkAuthBeforeDelete(id) {
             if (!this.isLoggedIn) {

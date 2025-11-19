@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register',[RegisterController::class, 'register']);
 Route::post('login',[RegisterController::class, 'login']);
+Route::post('logout', [RegisterController::class, 'logout'])->middleware('auth:sanctum');
+
+
 Route::get('/voitures',[VoitureController::class, 'index']);
 Route::get('/voitures/{id}',[VoitureController::class, 'show']);
 

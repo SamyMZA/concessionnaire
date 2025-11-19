@@ -27,7 +27,7 @@ Route::get('/apropos', function () {
 
 
 Route::get('{any}', function() {
-    return view('monopage');
+    return view('concessionnaire');
 })->where('any','.*');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

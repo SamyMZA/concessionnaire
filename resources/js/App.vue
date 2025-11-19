@@ -6,19 +6,19 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#3485dc; color: #FFFF;">
             <div class="collapse navbar-collapse" style="background-color:#3485dc; color: #FFFF;">
 
-                <!-- for logged-in user-->
+                <!-- for logged-in user -->
                 <div class="navbar-nav" v-if="isLoggedIn" style="background-color:#3485dc; color: #FFFF;">
                     <router-link to="/dashboard" class="nav-item nav-link">Dashboard</router-link>
                     <router-link to="/voitures" class="nav-item nav-link">Voiture</router-link>
                     <a class="nav-item nav-link" style="cursor: pointer;" @click="logout">Logout</a>
                 </div>
-                <!-- for non-logged user-->
+                <!-- for non-logged user -->
                 <div class="navbar-nav" v-else style="background-color:#3485dc; color: #FFFF;">
                     <router-link to="/" class="nav-item nav-link">Home</router-link>
                     <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
-                    <!--   <router-link to="/about" class="nav-item nav-link">About</router-link>
+                    <router-link to="/about" class="nav-item nav-link">About</router-link>
                     <router-link to="/login" class="nav-item nav-link">login</router-link>
-                    <router-link to="/register" class="nav-item nav-link">Register </router-link> -->
+                    <router-link to="/register" class="nav-item nav-link">Register </router-link>
                 </div>
             </div>
 
