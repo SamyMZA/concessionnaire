@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\VoitureController;
+use App\Http\Controllers\Api\BaseController;
+use App\Http\Controllers\Api\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register',[RegisterController::class, 'register']);
+//Route::apiResource('/voitures',VoitureController::class);
 
+Route::post('register',[RegisterController::class, 'register']);
 Route::post('login',[RegisterController::class, 'login']);
 Route::get('/voitures',[VoitureController::class, 'index']);
 Route::get('/voitures/{id}',[VoitureController::class, 'show']);
