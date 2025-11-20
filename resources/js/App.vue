@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="text-center" style="margin: 20px 0px 20px 0px; background-color:#2769b0; color: #FFFF;">
-            <h2>Site monopage Laravel-Vue avec authentification</h2>
+            <h2>Concessionnaire Auto</h2>
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#3485dc; color: #FFFF;">
             <div class="collapse navbar-collapse" style="background-color:#3485dc; color: #FFFF;">
@@ -30,7 +30,7 @@
             <div class="container">
                 <h6>Site monopage créé avec Laravel 8 et Vue js</h6>
                 <h6>Cours: Applications Web trensactionnelles</h6>
-                <h6>Crée par: Ouiza Ouyed</h6>
+                <h6>Crée par: Samy Mizi Allaoua et Marshal Ulysse</h6>
             </div>
         </footer>
     </div>
