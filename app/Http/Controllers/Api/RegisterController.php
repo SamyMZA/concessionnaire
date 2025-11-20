@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -22,6 +21,8 @@ public function register(Request $request)
              'password' => 'required',
  
              'c_password' => 'required|same:password',
+
+             'g-recaptcha-response' => 'required',
  
          ]);
  
@@ -32,24 +33,39 @@ public function register(Request $request)
              return $this->sendError('Validation Error.', $validator->errors());       
  
          }
- 
-    
- 
-         $input = $request->all();
- 
-         $input['password'] = bcrypt($input['password']);
- 
-         $user = User::create($input);
- 
-         $success['token'] =  $user->createToken('MyApp')->plainTextToken;
- 
-         $success['name'] =  $user->name;
-        // $success['id'] =  $user->id;  la réponse lors de l'enregistrement peut aussi être l'id et le token
- 
-    
- 
-         return response()->json([$success, "message"=> 'User register successfully.']);
 
+         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [  'secret' => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $request->input('g-recaptcha-response')
+        ]);
+
+
+        $captcha = $response->json();
+        if (empty($captcha['success']) || !$captcha['success']){
+            return response()->json(['success' => false, 'message' => 'Échec de la vérification reCAPTCHA'], 400);
+        }
+        
+        
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+         return response()->json(['success' => true, 'message' => 'Utilisateur enregistré avec succès', 'data' => [
+            'token' => $user->createToken('MyApp')->plainTextToken,
+            'name' => $user->name
+         ]], 201);
+
+         //$input = $request->all();
+ 
+         //$input['password'] = bcrypt($input['password']);
+ 
+         //$user = User::create($input);
+ 
+         //$success['token'] =  $user->createToken('MyApp')->plainTextToken;
+ 
+         //$success['name'] =  $user->name;
+        // $success['id'] =  $user->id;  la réponse lors de l'enregistrement peut aussi être l'id et le token
  
      }
      /**

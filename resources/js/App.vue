@@ -1,27 +1,63 @@
+<!-- À modifier* -->
 <template>
     <div class="container">
-        <div class="text-center" style="margin: 20px 0px 20px 0px; background-color:#2769b0; color: #FFFF;">
-            <h2>Concessionnaire Auto</h2>
+        <div
+            class="text-center"
+            style="
+                margin: 20px 0px 20px 0px;
+                background-color: #2769b0;
+                color: #ffff;
+            "
+        >
+            <h2>Site monopage Laravel-Vue avec authentification</h2>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#3485dc; color: #FFFF;">
-            <div class="collapse navbar-collapse" style="background-color:#3485dc; color: #FFFF;">
-
-                <!-- for logged-in user -->
-                <div class="navbar-nav" v-if="isLoggedIn" style="background-color:#3485dc; color: #FFFF;">
-                    <router-link to="/dashboard" class="nav-item nav-link">Dashboard</router-link>
-                    <router-link to="/voitures" class="nav-item nav-link">Voiture</router-link>
-                    <a class="nav-item nav-link" style="cursor: pointer;" @click="logout">Logout</a>
+        <nav
+            class="navbar navbar-expand-lg navbar-light bg-light"
+            style="background-color: #3485dc; color: #ffff"
+        >
+            <div
+                class="collapse navbar-collapse"
+                style="background-color: #3485dc; color: #ffff"
+            >
+                <!-- for logged-in user-->
+                <div
+                    class="navbar-nav"
+                    v-if="isLoggedIn"
+                    style="background-color: #3485dc; color: #ffff"
+                >
+                    <router-link to="/dashboard" class="nav-item nav-link"
+                        >Dashboard</router-link
+                    >
+                    <router-link to="/voitures" class="nav-item nav-link"
+                        >Voitures</router-link
+                    >
+                    <a
+                        class="nav-item nav-link"
+                        style="cursor: pointer"
+                        @click="logout"
+                        >Logout</a
+                    >
                 </div>
-                <!-- for non-logged user -->
-                <div class="navbar-nav" v-else style="background-color:#3485dc; color: #FFFF;">
-                    <router-link to="/" class="nav-item nav-link">Home</router-link>
-                    <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
-                    <router-link to="/about" class="nav-item nav-link">About</router-link>
+                <!-- for non-logged user-->
+                <div
+                    class="navbar-nav"
+                    v-else
+                    style="background-color: #3485dc; color: #ffff"
+                >
+                    <router-link to="/" class="nav-item nav-link"
+                        >Home</router-link
+                    >
+                    <router-link to="/voitures" class="nav-item nav-link"
+                        >Voitures</router-link
+                    >
+                    <!--   <router-link to="/about" class="nav-item nav-link">About</router-link>
                     <router-link to="/login" class="nav-item nav-link">login</router-link>
-                    <router-link to="/register" class="nav-item nav-link">Register </router-link>
+                    <router-link to="/register" class="nav-item nav-link">Register </router-link> -->
                 </div>
             </div>
-
+            <div>
+                <SearchBar />
+            </div>
         </nav>
         <br />
         <router-view />
@@ -30,50 +66,46 @@
             <div class="container">
                 <h6>Site monopage créé avec Laravel 8 et Vue js</h6>
                 <h6>Cours: Applications Web trensactionnelles</h6>
-                <h6>Crée par: Samy Mizi Allaoua et Marshal Ulysse</h6>
+                <h6>Crée par: Marshlee et Samy</h6>
             </div>
         </footer>
     </div>
-
 </template>
 
 <script>
 export default {
-
     name: "App",
     data() {
-
         return {
-
             isLoggedIn: false,
-        }
+        };
     },
     created() {
         if (window.Laravel.isLoggedin) {
-            this.isLoggedIn = true
+            this.isLoggedIn = true;
         }
     },
     methods: {
         logout(e) {
-            console.log('ss')
-            e.preventDefault()
-            this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.post('/api/logout')
-                    .then(response => {
+            console.log("ss");
+            e.preventDefault();
+            this.$axios.get("/sanctum/csrf-cookie").then((response) => {
+                this.$axios
+                    .post("/api/logout")
+                    .then((response) => {
                         if (response.data.success) {
-                            window.location.href = "/voitures"
+                            window.location.href = "/voitures";
                         } else {
-                            console.log(response)
+                            console.log(response);
                         }
                     })
                     .catch(function (error) {
                         console.error(error);
                     });
-            })
-        }
+            });
+        },
     },
-}
-
+};
 </script>
 
 <style scoped>

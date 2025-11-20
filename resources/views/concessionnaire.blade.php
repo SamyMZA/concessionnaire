@@ -13,6 +13,7 @@
             background-color: hsla(184, 100%, 79%, 1.00)
         }
     </style>
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
 </head>
 
 <body>

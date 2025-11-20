@@ -23,8 +23,9 @@ Route::post('register',[RegisterController::class, 'register']);
 Route::post('login',[RegisterController::class, 'login']);
 Route::post('logout', [RegisterController::class, 'logout'])->middleware('auth:sanctum');
 
+Route::get('/voitures', [VoitureController::class, 'index']);
+Route::get('voitures/autocomplete', [VoitureController::class, 'autocomplete'])->name('autocomplete');
 
-Route::get('/voitures',[VoitureController::class, 'index']);
 Route::get('/voitures/{id}',[VoitureController::class, 'show']);
 
 
@@ -36,6 +37,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route:: delete ('voitures/{id}', [VoitureController::class, 'destroy']); 
     
 });
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
