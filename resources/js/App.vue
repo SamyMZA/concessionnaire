@@ -73,6 +73,20 @@
 </template>
 
 <script>
+
+import api from './axios'; // adapte le chemin selon ton projet
+import { useRouter } from 'vue-router'; // si tu veux utiliser router.push
+
+async function logout() {
+    try {
+        await api.post('/logout'); // Appel au controller Laravel
+        localStorage.removeItem('token'); // Supprime le token côté client
+        router.push('/login'); // Redirige vers login
+    } catch (err) {
+        console.error('Erreur logout:', err.response?.data || err.message);
+    }
+}
+
 export default {
     name: "App",
     data() {
@@ -86,31 +100,37 @@ export default {
         }
     },
     methods: {
-        logout(e) {
-            console.log("ss");
+        async logout(e) {
             e.preventDefault();
-            this.$axios.get("/sanctum/csrf-cookie").then((response) => {
-                this.$axios
-                    .post("/api/logout")
-                    .then((response) => {
-                        if (response.data.success) {
-                            window.location.href = "/voitures";
-                        } else {
-                            console.log(response);
-                        }
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
-            });
-        },
-    },
+            try {
+                await api.get('/sanctum/csrf-cookie'); // si tu utilises sanctum
+                const response = await api.post('/logout');
+
+                if (response.data.success) {
+                    // Supprimer le token
+                    localStorage.removeItem('token');
+
+                    // Mettre à jour le state
+                    this.isLoggedIn = false;
+
+                    // Rediriger via router (SPA)
+                    this.$router.push('/login');
+                } else {
+                    console.log(response.data);
+                }
+            } catch (error) {
+                console.error('Erreur logout:', error.response?.data || error.message);
+            }
+        }
+
+    }
+
 };
 </script>
 
 <style scoped>
 .footer {
-    background-color: #08539d;
+    background-color: #000000;
     padding: 20px;
     color: rgb(255, 255, 255);
     text-align: center;

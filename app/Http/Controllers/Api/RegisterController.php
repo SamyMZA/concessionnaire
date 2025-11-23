@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
@@ -105,10 +106,27 @@ public function register(Request $request)
  
      }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        $user = $request->user(); // ou Auth::user()
 
-        // À compléter
+        if ($user) {
+            // Supprime tous les tokens API
+            $user->tokens()->delete();
 
+            // **Ne pas appeler Auth::logout() ici !**
+            return response()->json([
+                'success' => true,
+                'message' => 'User logged out successfully.'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Logout failed. User not authenticated.'
+        ], 401);
     }
+
+
+
 }
