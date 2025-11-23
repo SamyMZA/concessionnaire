@@ -11,7 +11,7 @@
                     <div class="card-header">Connexion</div>
                     <div class="card-body">
 
-                        <form @submit.prevent="handleRegister">
+                        <form @submit.prevent="handleLogin">
 
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label text-md-right">Courriel</label>
@@ -61,10 +61,9 @@ const props = defineProps({
     visible: { type: Boolean, default: false }  //afficher/masquer la fenêtre d'inscription.
 });
 
-const name = ref('');
+
 const email = ref('');
 const password = ref('');
-const c_password = ref('');
 const error = ref(null);
 const loading = ref(false);
 
@@ -123,7 +122,7 @@ onBeforeUnmount(() => {
     }
 });
 
-async function handleRegister() {
+async function handleLogin() {
     error.value = null;
     if (!recaptchaToken.value) {
         error.value = 'Merci de confirmer que vous n\'êtes pas un robot.';
@@ -135,11 +134,9 @@ async function handleRegister() {
         // Option : get CSRF cookie for sanctum if using cookie auth
         await api.get('/sanctum/csrf-cookie');
 
-        const res = await api.post('/register', {
-            name: name.value,
+        const res = await api.post('/login', {
             email: email.value,
             password: password.value,
-            c_password: c_password.value,
             'g-recaptcha-response': recaptchaToken.value
         });
 
@@ -147,11 +144,11 @@ async function handleRegister() {
             // stockage token si tu veux (si renvoyé)
             if (res.data.data?.token) {
                 localStorage.setItem('token', res.data.data.token);
-                router.push("/login");
+                router.push("/dashboard");
             }
 
         } else {
-            error.value = res.data.message || 'Erreur inscription';
+            error.value = res.data.message || 'Erreur de connexion';
         }
     } catch (err) {
         if (err.response?.status === 422) {

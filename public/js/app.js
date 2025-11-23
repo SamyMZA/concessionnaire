@@ -25563,10 +25563,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     logout: function logout(e) {
       var _this = this;
-      console.log('ss');
+      console.log("ss");
       e.preventDefault();
-      this.$axios.get('/sanctum/csrf-cookie').then(function (response) {
-        _this.$axios.post('/api/logout').then(function (response) {
+      this.$axios.get("/sanctum/csrf-cookie").then(function (response) {
+        _this.$axios.post("/api/logout").then(function (response) {
           if (response.data.success) {
             window.location.href = "/voitures";
           } else {
@@ -25750,7 +25750,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../axios */ "./resources/js/axios.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
-/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -25772,10 +25771,8 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     __expose();
     var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
     var props = __props;
-    var name = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var email = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var password = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
-    var c_password = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var recaptchaWidgetId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
@@ -25793,7 +25790,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     
     }); */
 
-    var SITE_KEY = process.env.MIX_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY || ''; // fallback pour MIX
+    var SITE_KEY = "6LdpkQksAAAAAAEt8O-zYxhW4gbzB6wZ5pOWcRoE" || 0 || 0; // fallback pour MIX
     //const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || (window.RECAPTCHA_SITE_KEY || ''); //fallback pour VITE
 
     function renderRecaptcha() {
@@ -25833,11 +25830,11 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         window.grecaptcha.reset(recaptchaWidgetId.value);
       }
     });
-    function handleRegister() {
-      return _handleRegister.apply(this, arguments);
+    function handleLogin() {
+      return _handleLogin.apply(this, arguments);
     }
-    function _handleRegister() {
-      _handleRegister = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+    function _handleLogin() {
+      _handleLogin = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
         var res, _res$data$data, _err$response, errors, _err$response2, _t;
         return _regenerator().w(function (_context) {
           while (1) switch (_context.p = _context.n) {
@@ -25856,11 +25853,9 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               return _axios__WEBPACK_IMPORTED_MODULE_1__["default"].get('/sanctum/csrf-cookie');
             case 3:
               _context.n = 4;
-              return _axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/register', {
-                name: name.value,
+              return _axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/login', {
                 email: email.value,
                 password: password.value,
-                c_password: c_password.value,
                 'g-recaptcha-response': recaptchaToken.value
               });
             case 4:
@@ -25869,10 +25864,10 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 // stockage token si tu veux (si renvoyé)
                 if ((_res$data$data = res.data.data) !== null && _res$data$data !== void 0 && _res$data$data.token) {
                   localStorage.setItem('token', res.data.data.token);
-                  router.push("/login");
+                  router.push("/dashboard");
                 }
               } else {
-                error.value = res.data.message || 'Erreur inscription';
+                error.value = res.data.message || 'Erreur de connexion';
               }
               _context.n = 6;
               break;
@@ -25901,15 +25896,13 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
           }
         }, _callee, null, [[2, 5, 6, 7]]);
       }));
-      return _handleRegister.apply(this, arguments);
+      return _handleLogin.apply(this, arguments);
     }
     var __returned__ = {
       router: router,
       props: props,
-      name: name,
       email: email,
       password: password,
-      c_password: c_password,
       error: error,
       loading: loading,
       recaptchaWidgetId: recaptchaWidgetId,
@@ -25917,7 +25910,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       recaptchaWrapper: recaptchaWrapper,
       SITE_KEY: SITE_KEY,
       renderRecaptcha: renderRecaptcha,
-      handleRegister: handleRegister,
+      handleLogin: handleLogin,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       onBeforeUnmount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount,
@@ -25953,7 +25946,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../axios */ "./resources/js/axios.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
-/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -25996,7 +25988,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     
     }); */
 
-    var SITE_KEY = process.env.MIX_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY || ''; // fallback pour MIX
+    var SITE_KEY = "6LdpkQksAAAAAAEt8O-zYxhW4gbzB6wZ5pOWcRoE" || 0 || 0; // fallback pour MIX
     //const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || (window.RECAPTCHA_SITE_KEY || ''); //fallback pour VITE
 
     function renderRecaptcha() {
@@ -26168,14 +26160,14 @@ var _hoisted_2 = {
   "class": "navbar navbar-expand-lg navbar-light bg-light",
   style: {
     "background-color": "#3485dc",
-    "color": "#FFFF"
+    "color": "#ffff"
   }
 };
 var _hoisted_3 = {
   "class": "collapse navbar-collapse",
   style: {
     "background-color": "#3485dc",
-    "color": "#FFFF"
+    "color": "#ffff"
   }
 };
 var _hoisted_4 = {
@@ -26183,27 +26175,28 @@ var _hoisted_4 = {
   "class": "navbar-nav",
   style: {
     "background-color": "#3485dc",
-    "color": "#FFFF"
+    "color": "#ffff"
   }
 };
 var _hoisted_5 = {
   "class": "navbar-nav",
   style: {
     "background-color": "#3485dc",
-    "color": "#FFFF"
+    "color": "#ffff"
   }
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+  var _component_SearchBar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SearchBar");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "text-center",
     style: {
       "margin": "20px 0px 20px 0px",
       "background-color": "#2769b0",
-      "color": "#FFFF"
+      "color": "#ffff"
     }
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Concessionnaire Auto")], -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" for logged-in user "), $data.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Site monopage Laravel-Vue avec authentification")], -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" for logged-in user"), $data.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/dashboard",
     "class": "nav-item nav-link"
   }, {
@@ -26216,7 +26209,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "nav-item nav-link"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return _toConsumableArray(_cache[2] || (_cache[2] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Voiture", -1 /* CACHED */)]));
+      return _toConsumableArray(_cache[2] || (_cache[2] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Voitures", -1 /* CACHED */)]));
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
@@ -26229,7 +26222,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, "Logout")])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" for non-logged user "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" for non-logged user"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/",
     "class": "nav-item nav-link"
   }, {
@@ -26269,11 +26262,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _toConsumableArray(_cache[7] || (_cache[7] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register ", -1 /* CACHED */)]));
     }),
     _: 1 /* STABLE */
-  })])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))])]), _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view), _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", {
+  })])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SearchBar)])]), _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view), _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", {
     "class": "footer"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "container"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Site monopage créé avec Laravel 8 et Vue js"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Cours: Applications Web trensactionnelles"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Crée par: Samy Mizi Allaoua")])], -1 /* CACHED */))]);
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Site monopage créé avec Laravel 8 et Vue js"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Cours: Applications Web trensactionnelles"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Crée par: Marshlee et Samy")])], -1 /* CACHED */))]);
 }
 
 /***/ }),
@@ -26481,7 +26474,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$setup.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.error), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "card-header"
   }, "Connexion", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.handleRegister, ["prevent"])
+    onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.handleLogin, ["prevent"])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "col-sm-4 col-form-label text-md-right"
   }, "Courriel", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -52198,18 +52191,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 var api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-  /*  baseURL: import.meta.env.VITE_API_BASE_URL || '/api', // ou '/api'    Pour VITE*/
-  baseURL: process.env.MIX_API_BASE_URL,
-  // POur MIX
-  withCredentials: true // important pour sanctum cookie
+  baseURL: "http://127.0.0.1:8000/api",
+  withCredentials: true
 });
-
-// Interceptor pour ajouter Bearer si token stocké
 api.interceptors.request.use(function (config) {
-  var token = localStorage.getItem('token');
+  var token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = "Bearer ".concat(token);
   }
