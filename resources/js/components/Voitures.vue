@@ -27,7 +27,9 @@
                         <div v-if="voiture.img">
                             <img
                                 class="img-thumbnail"
-                                :src="'/images/upload/' + voiture.img"
+                                :src="'/storage/images/upload/' + voiture.img"
+                                width="300px"
+                                height="200px"
                             />
                         </div>
                     </td>

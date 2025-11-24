@@ -26634,7 +26634,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: voiture.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_2, [voiture.img ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       "class": "img-thumbnail",
-      src: '/images/upload/' + voiture.img
+      src: '/storage/images/upload/' + voiture.img,
+      width: "300px",
+      height: "200px"
     }, null, 8 /* PROPS */, _hoisted_4)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(voiture.marque), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(voiture.modele), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(voiture.prix) + " $ ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <router-link :to=\"{ name: 'infovoiture', params: { id: voiture.id } }\"\r\n                                class=\"btn btn-primary\">Plus\r\n                            </router-link>\r\n\r\n                            <router-link :to=\"{ name: 'modifiervoiture', params: { id: voiture.id } }\"\r\n                                class=\"btn btn-warning\" v-if=\"isLoggedIn\">Modifier\r\n                            </router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       "class": "btn btn-danger",
       onClick: function onClick($event) {
