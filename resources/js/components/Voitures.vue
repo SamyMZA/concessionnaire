@@ -65,6 +65,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
@@ -74,11 +75,12 @@ export default {
     },
     created() {
         this.checkLoginStatus(); // Vérification de la connexion dès la création du composant
-        // Chargement des articles
+        // Chargement des voitures
         axios
             .get("/api/voitures")
             .then((response) => {
                 this.voitures = response.data;
+                console.log(this.voitures);    // doit montrer exactement ton tableau de 1 objet
             })
             .catch((error) => {
                 console.error(error);
@@ -117,38 +119,35 @@ export default {
                     this.$router.push("/login");
                 });
             } else {
-                this.deleteArticle(id);
+                this.deleteVoiture(id);
             }
         },
 
-        deleteArticle(id) {
-            if (!confirm("Voulez vous vraiment supprimer cette voiture ?")) {
+        deleteVoiture(id) {
+            if (!confirm("Are you sure to delete this voiture ?")) {
                 return;
             }
             axios
-                .delete(`/api/voitures/${id}`)
+                .delete(`/voitures/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
                 .then(() => {
+                    // Retirer l'voiture du tableau local après suppression
                     this.voitures = this.voitures.filter(
                         (voiture) => voiture.id !== id
                     );
                 })
                 .catch((error) => {
-                    console.error(
-                        "Erreur lors de la suppression de la voiture :",
-                        error
-                    );
+                    console.error("Erreur lors de la suppression de l'voiture :", error);
                     // si erreur 401/403 -> rediriger vers login
-                    if (
-                        error.response &&
-                        (error.response.status === 401 ||
-                            error.response.status === 403)
-                    ) {
-                        this.$router.push({ name: "login" }).catch(() => {
-                            this.$router.push("/login");
-                        });
+                    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+                        this.$router.push({ name: 'login' }).catch(() => { this.$router.push('/login') });
                     }
                 });
         },
+
     },
 };
 </script>

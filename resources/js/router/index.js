@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard.vue';
 import Register from '../pages/Register.vue';
 import Voitures from '../components/Voitures.vue';
 import Login from "../pages/Login.vue";
+import AddVoiture from "../components/AddVoiture.vue";
 
 const routes = [
     {
@@ -31,6 +32,11 @@ const routes = [
         name: 'login',
         path: '/login',
         component: Login
+    },
+    {
+        name: 'addvoiture',
+        path: '/add',
+        component: AddVoiture
     }
 ];
 

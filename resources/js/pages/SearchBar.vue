@@ -37,7 +37,7 @@ export default {
 
             // Appeler l'API Laravel
             axios
-                .get("/api/articles/autocomplete", {
+                .get("/voitures/autocomplete", {
                     params: { query: this.query },
                 })
                 .then((response) => {

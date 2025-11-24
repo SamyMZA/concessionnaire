@@ -19,40 +19,20 @@
                 class="collapse navbar-collapse"
                 style="background-color: #3485dc; color: #ffff"
             >
-                <!-- for logged-in user-->
-                <div
-                    class="navbar-nav"
-                    v-if="isLoggedIn"
-                    style="background-color: #3485dc; color: #ffff"
-                >
-                    <router-link to="/dashboard" class="nav-item nav-link"
-                        >Dashboard</router-link
-                    >
-                    <router-link to="/voitures" class="nav-item nav-link"
-                        >Voitures</router-link
-                    >
-                    <a
-                        class="nav-item nav-link"
-                        style="cursor: pointer"
-                        @click="logout"
-                        >Logout</a
-                    >
+                                <!-- for logged-in user-->
+                <div class="navbar-nav" v-if="isLoggedIn" style="background-color:#3485dc; color: #FFFF;">
+                    <router-link to="/dashboard" class="nav-item nav-link">Dashboard</router-link>
+                    <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
+                    <a class="nav-item nav-link" style="cursor: pointer;" @click="logout">Déconnexion</a>
                 </div>
                 <!-- for non-logged user-->
-                <div
-                    class="navbar-nav"
-                    v-else
-                    style="background-color: #3485dc; color: #ffff"
-                >
-                    <router-link to="/" class="nav-item nav-link"
-                        >Home</router-link
-                    >
-                    <router-link to="/voitures" class="nav-item nav-link"
-                        >Voitures</router-link
-                    >
-                      <router-link to="/about" class="nav-item nav-link">About</router-link>
-                    <router-link to="/login" class="nav-item nav-link">login</router-link>
-                    <router-link to="/register" class="nav-item nav-link">Register </router-link>
+                <div class="navbar-nav" v-else style="background-color:#3485dc; color: #FFFF;">
+                    <router-link to="/" class="nav-item nav-link">Acceuil</router-link>
+                    <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
+                    <router-link to="/about" class="nav-item nav-link">À propos</router-link>
+                    <router-link to="/login" class="nav-item nav-link">Connexion</router-link>
+                    <router-link to="/register" class="nav-item nav-link">Inscription</router-link>
+
                 </div>
             </div>
             <div>
@@ -74,58 +54,46 @@
 
 <script>
 
-import api from './axios'; // adapte le chemin selon ton projet
-import { useRouter } from 'vue-router'; // si tu veux utiliser router.push
-
-async function logout() {
-    try {
-        await api.post('/logout'); // Appel au controller Laravel
-        localStorage.removeItem('token'); // Supprime le token côté client
-        router.push('/login'); // Redirige vers login
-    } catch (err) {
-        console.error('Erreur logout:', err.response?.data || err.message);
-    }
-}
+import SearchBar from './pages/SearchBar.vue';
 
 export default {
     name: "App",
+    components: {
+        SearchBar,
+    },
+    name: "App",
     data() {
+
         return {
+
             isLoggedIn: false,
-        };
+        }
     },
     created() {
         if (window.Laravel.isLoggedin) {
-            this.isLoggedIn = true;
+            this.isLoggedIn = true
         }
     },
     methods: {
-        async logout(e) {
-            e.preventDefault();
-            try {
-                await api.get('/sanctum/csrf-cookie'); // si tu utilises sanctum
-                const response = await api.post('/logout');
-
-                if (response.data.success) {
-                    // Supprimer le token
-                    localStorage.removeItem('token');
-
-                    // Mettre à jour le state
-                    this.isLoggedIn = false;
-
-                    // Rediriger via router (SPA)
-                    this.$router.push('/login');
-                } else {
-                    console.log(response.data);
-                }
-            } catch (error) {
-                console.error('Erreur logout:', error.response?.data || error.message);
-            }
+        logout(e) {
+            console.log('ss')
+            e.preventDefault()
+            this.$axios.get('/sanctum/csrf-cookie').then(response => {
+                this.$axios.post('/logout')
+                    .then(response => {
+                        if (response.data.success) {
+                            window.location.href = "/"
+                        } else {
+                            console.log(response)
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error(error);
+                    });
+            })
         }
-
-    }
-
-};
+    },
+}
 </script>
 
 <style scoped>

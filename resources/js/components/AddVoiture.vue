@@ -89,7 +89,7 @@ async function addVoiture() {
         if (voiture.value.img) formData.append("img", voiture.value.img);
 
         // Envoi de la voiture
-        const response = await axios.post("/api/voitures", formData, {
+        const response = await axios.post("/voitures", formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "multipart/form-data",
