@@ -17,7 +17,7 @@
 
     <style>
         body {
-            background-color: hsl(193, 78%, 82%)
+            background-color: hsla(0, 0%, 86%, 1.00)
         }
     </style>
 </head>

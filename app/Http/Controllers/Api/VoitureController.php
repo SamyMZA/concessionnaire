@@ -141,4 +141,22 @@ class VoitureController extends Controller
         } 
         
     }
+
+
+    public function autocomplete(Request $request){
+        $search = $request->search;
+        $voitures = Voiture::orderBy('marque','asc')
+            ->select('id','marque')
+            ->where('marque','LIKE', '%'.$search. '%')
+            ->get();
+            $reponse = array();
+            foreach($voitures as $voiture){
+                $reponse[] = array(
+                    'value'=> $voiture->id,
+                    'label'=> $voiture->marque
+                );
+            }
+        return response()->json($reponse);
+    }
+
 }

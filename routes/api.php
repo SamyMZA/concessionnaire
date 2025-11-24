@@ -24,7 +24,7 @@ Route::post('login',[RegisterController::class, 'login']);
 Route::post('logout', [RegisterController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/voitures', [VoitureController::class, 'index']);
-Route::get('voitures/autocomplete', [VoitureController::class, 'autocomplete'])->name('autocomplete');
+Route::get('/voitures/autocomplete', [VoitureController::class, 'autocomplete'])->name('autocomplete');
 
 Route::get('/voitures/{id}',[VoitureController::class, 'show']);
 

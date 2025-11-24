@@ -4,32 +4,36 @@
         <div
             class="text-center"
             style="
-                margin: 20px 0px 20px 0px;
-                background-color: #2769b0;
+                margin: 0px 0px 0px 0px;
+                background-color: black;
                 color: #ffff;
             "
         >
-            <h2>Site monopage Laravel-Vue avec authentification</h2>
+            <h2>Concessionnaire</h2>
         </div>
         <nav
             class="navbar navbar-expand-lg navbar-light bg-light"
-            style="background-color: #3485dc; color: #ffff"
+            style="background-color: black; color: #ffff"
         >
             <div
                 class="collapse navbar-collapse"
-                style="background-color: #3485dc; color: #ffff"
+                style="background-color: #ffff; color: #ffff"
             >
                                 <!-- for logged-in user-->
-                <div class="navbar-nav" v-if="isLoggedIn" style="background-color:#3485dc; color: #FFFF;">
+                <div class="navbar-nav" v-if="isLoggedIn" style="background-color: #FFFF; color: #FFFF;">
+                    <router-link to="/" class="nav-item nav-link">Acceuil</router-link>
                     <router-link to="/dashboard" class="nav-item nav-link">Dashboard</router-link>
                     <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
+                    <router-link to="/about" class="nav-item nav-link">À propos</router-link>
+
                     <a class="nav-item nav-link" style="cursor: pointer;" @click="logout">Déconnexion</a>
                 </div>
                 <!-- for non-logged user-->
-                <div class="navbar-nav" v-else style="background-color:#3485dc; color: #FFFF;">
+                <div class="navbar-nav" v-else style="background-color: #FFFF; color: #FFFF;">
                     <router-link to="/" class="nav-item nav-link">Acceuil</router-link>
                     <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
                     <router-link to="/about" class="nav-item nav-link">À propos</router-link>
+
                     <router-link to="/login" class="nav-item nav-link">Connexion</router-link>
                     <router-link to="/register" class="nav-item nav-link">Inscription</router-link>
 
