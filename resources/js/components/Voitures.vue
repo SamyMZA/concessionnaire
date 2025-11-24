@@ -128,7 +128,7 @@ export default {
                 return;
             }
             axios
-                .delete(`/voitures/${id}`, {
+                .delete(`api/voitures/${id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }

@@ -54,6 +54,9 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const voiture = ref({
     marque: "",
@@ -78,7 +81,7 @@ async function addVoiture() {
 
         if (!token) {
             alert("Veuillez vous connecter d'abord.");
-            return this.$router.push("/login");
+            return router.push("/login");
         }
         // Préparer les données
         const formData = new FormData();
@@ -89,7 +92,7 @@ async function addVoiture() {
         if (voiture.value.img) formData.append("img", voiture.value.img);
 
         // Envoi de la voiture
-        const response = await axios.post("/voitures", formData, {
+        const response = await axios.post("api/voitures", formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "multipart/form-data",

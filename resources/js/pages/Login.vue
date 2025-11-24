@@ -140,13 +140,16 @@ async function handleLogin() {
             'g-recaptcha-response': recaptchaToken.value
         });
 
-        if (res.data.success) {
+        // if (res.data.success) {
             // stockage token si tu veux (si renvoyé)
-            if (res.data.data?.token) {
-                localStorage.setItem('token', res.data.data.token);
-                router.push("/dashboard");
-            }
+            // if (res.data.data?.token) {
+            //     localStorage.setItem('token', res.data.data.token);
+            //     router.push("/login");
+            // }
 
+        if (res.data["0"]?.token) {
+            localStorage.setItem('token', res.data["0"].token);
+            router.push("/dashboard");
         } else {
             error.value = res.data.message || 'Erreur de connexion';
         }
