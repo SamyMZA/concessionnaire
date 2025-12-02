@@ -25613,6 +25613,16 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     var __expose = _ref.expose;
     __expose();
     var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
+    var fileInput = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    function onDrop(e) {
+      var files = e.dataTransfer.files;
+      if (files.length) {
+        voiture.value.img = files[0];
+      }
+    }
+    function triggerFileInput() {
+      fileInput.value.click();
+    }
     var voiture = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
       marque: "",
       modele: "",
@@ -25687,6 +25697,9 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     }
     var __returned__ = {
       router: router,
+      fileInput: fileInput,
+      onDrop: onDrop,
+      triggerFileInput: triggerFileInput,
       voiture: voiture,
       loading: loading,
       onFileChange: onFileChange,
@@ -25920,7 +25933,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     
     }); */
 
-    var SITE_KEY = "6LdpkQksAAAAAAEt8O-zYxhW4gbzB6wZ5pOWcRoE" || 0 || 0; // fallback pour MIX
+    var SITE_KEY = "6LegUx4sAAAAAM-L6T-jG78w1AKsOpKN9t0K9Ypn" || 0 || 0; // fallback pour MIX
     //const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || (window.RECAPTCHA_SITE_KEY || ''); //fallback pour VITE
 
     function renderRecaptcha() {
@@ -26122,7 +26135,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     
     }); */
 
-    var SITE_KEY = "6LdpkQksAAAAAAEt8O-zYxhW4gbzB6wZ5pOWcRoE" || 0 || 0; // fallback pour MIX
+    var SITE_KEY = "6LegUx4sAAAAAM-L6T-jG78w1AKsOpKN9t0K9Ypn" || 0 || 0; // fallback pour MIX
     //const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || (window.RECAPTCHA_SITE_KEY || ''); //fallback pour VITE
 
     function renderRecaptcha() {
@@ -26503,15 +26516,21 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "mb-3"
 };
-var _hoisted_6 = ["disabled"];
+var _hoisted_6 = {
+  key: 0
+};
+var _hoisted_7 = {
+  key: 1
+};
+var _hoisted_8 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
     "class": "text-center mb-4"
   }, "Ajouter une voiture", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.addVoiture, ["prevent"]),
     enctype: "multipart/form-data",
     "class": "p-3 border rounded bg-light"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "Marque :", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
@@ -26520,7 +26539,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": "form-control",
     required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.voiture.marque]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.voiture.marque]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "Modele :", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
@@ -26528,7 +26547,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": "form-control",
     required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.voiture.modele]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.voiture.modele]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "Prix :", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
@@ -26537,17 +26556,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": "form-control",
     required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.voiture.prix]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.voiture.prix]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
-  }, "Image :", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, "Image :", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "dropzone p-4 border border-dashed text-center",
+    onDragover: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["prevent"])),
+    onDrop: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.onDrop, ["prevent"]),
+    onClick: $setup.triggerFileInput
+  }, [!$setup.voiture.img ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_6, "Glissez votre image ici ou cliquez pour sélectionner")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.voiture.img.name), 1 /* TEXT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
-    "class": "form-control",
-    onChange: $setup.onFileChange
-  }, null, 32 /* NEED_HYDRATION */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onChange: $setup.onFileChange,
+    "class": "d-none",
+    ref: "fileInput"
+  }, null, 544 /* NEED_HYDRATION, NEED_PATCH */)], 32 /* NEED_HYDRATION */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"mb-3\">\r\n                <label class=\"form-label\">Image :</label>\r\n                <input\r\n                    type=\"file\"\r\n                    class=\"form-control\"\r\n                    @change=\"onFileChange\"\r\n                />\r\n            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     "class": "btn btn-primary",
     disabled: $setup.loading
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.loading ? "Envoi en cours..." : "Enregistrer"), 9 /* TEXT, PROPS */, _hoisted_6)], 32 /* NEED_HYDRATION */)]);
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.loading ? "Envoi en cours..." : "Enregistrer"), 9 /* TEXT, PROPS */, _hoisted_8)], 32 /* NEED_HYDRATION */)]);
 }
 
 /***/ }),
