@@ -6,6 +6,7 @@ import Register from '../pages/Register.vue';
 import Voitures from '../components/Voitures.vue';
 import Login from "../pages/Login.vue";
 import AddVoiture from "../components/AddVoiture.vue";
+import About from "../pages/About.vue";
 
 const routes = [
     {
@@ -37,6 +38,11 @@ const routes = [
         name: 'addvoiture',
         path: '/add',
         component: AddVoiture
+    },
+    {
+        name: 'about',
+        path: '/about',
+        component: About
     }
 ];
 
