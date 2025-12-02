@@ -48,14 +48,10 @@ export default {
                 });
         },
         selectSuggestion(suggestion) {
-            this.query = suggestion.label; // Remplir l'input avec la suggestion sélectionnée
-            this.suggestions = []; // Vider les suggestions
-            // Ajouter une action comme la redirection ou autre
-            console.log("Selected:", suggestion);
-            this.$router.push({
-                // À compléter: afficher les détails de la donnée séléctionnée.
-            });
-        },
+            this.query = suggestion.label;
+            this.suggestions = [];
+            this.$router.push({ name: 'voiture', params: { id: suggestion.value } });
+        }
     },
 };
 </script>

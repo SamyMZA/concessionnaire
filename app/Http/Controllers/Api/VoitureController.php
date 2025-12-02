@@ -67,7 +67,8 @@ class VoitureController extends Controller
      */
     public function show($id)
     {
-        return Voiture::findOrFail($id);
+        $voiture = Voiture::findOrFail($id);
+        return response()->json($voiture, 200);
     }
 
     /**
