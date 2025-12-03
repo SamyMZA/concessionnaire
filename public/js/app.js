@@ -25920,7 +25920,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     
     }); */
 
-    var SITE_KEY = "6LdpkQksAAAAAAEt8O-zYxhW4gbzB6wZ5pOWcRoE" || 0 || 0; // fallback pour MIX
+    var SITE_KEY = "6LdFVyAsAAAAAI2Z0hkbZYKHVds0lp8RK5x3W9vr" || 0 || 0; // fallback pour MIX
     //const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || (window.RECAPTCHA_SITE_KEY || ''); //fallback pour VITE
 
     function renderRecaptcha() {
@@ -26122,7 +26122,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     
     }); */
 
-    var SITE_KEY = "6LdpkQksAAAAAAEt8O-zYxhW4gbzB6wZ5pOWcRoE" || 0 || 0; // fallback pour MIX
+    var SITE_KEY = "6LdFVyAsAAAAAI2Z0hkbZYKHVds0lp8RK5x3W9vr" || 0 || 0; // fallback pour MIX
     //const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || (window.RECAPTCHA_SITE_KEY || ''); //fallback pour VITE
 
     function renderRecaptcha() {
@@ -52624,9 +52624,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 var api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: process.env.MIX_API_BASE_URL,
   withCredentials: true
 });
 api.interceptors.request.use(function (config) {
