@@ -15,11 +15,11 @@
         <div class="row2">
             @foreach ($achats as $index => $achat)
                     <div class="cardVoiture">
-                        <p>{{ $achat->utilisateur->nom }} @lang("general.achateurs") {{ $achat->voiture->marque }}</p>
+                        <p>{{ $achat->utilisateur->name }} @lang("general.achateurs") {{ $achat->voiture->marque }}</p>
                         <form method="post"  action="{{ url('achats/'. $achat->id) }}">
                             @csrf
                             @method('DELETE')
-                            <button>Annuler</button>
+                            <button>@lang("Annuler")</button>
                         </form>
                     </div>  
             @endforeach

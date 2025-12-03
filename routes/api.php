@@ -24,15 +24,18 @@ Route::post('login',[RegisterController::class, 'login']);
 Route::post('logout', [RegisterController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/voitures', [VoitureController::class, 'index']);
-Route::get('voitures/autocomplete', [VoitureController::class, 'autocomplete'])->name('autocomplete');
+Route::get('/voitures/autocomplete', [VoitureController::class, 'autocomplete'])->name('autocomplete');
 
-Route::get('/voitures/{id}',[VoitureController::class, 'show']);
+Route::get('/voiture/{id}',[VoitureController::class, 'show']);
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('voitures/',[VoitureController::class, 'store']);
-    Route::get('voitures/edit/{id}',[VoitureController::class, 'edit']);
-    Route::put('voitures/update/{id}',[VoitureController::class, 'update']);
-    Route::delete('voitures/{id}',[VoitureController::class, 'destroy']);
+
+Route::middleware('auth:sanctum')->group(function() {
+    
+    Route:: post ('voitures', [VoitureController::class, 'store']); 
+    Route:: get ('voitures/edit/{id}', [VoitureController::class, 'edit']); 
+    Route:: patch ('voitures/update/{id}', [VoitureController::class, 'update']); 
+    Route:: delete ('voitures/{id}', [VoitureController::class, 'destroy']); 
+    
 });
 
 

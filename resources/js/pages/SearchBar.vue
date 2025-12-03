@@ -12,7 +12,7 @@
                 :key="index"
                 @click="selectSuggestion(suggestion)"
             >
-                {{ suggestion.title }}
+                {{ suggestion.label }}
             </li>
         </ul>
     </div>
@@ -37,8 +37,8 @@ export default {
 
             // Appeler l'API Laravel
             axios
-                .get("/api/articles/autocomplete", {
-                    params: { query: this.query },
+                .get("/api/voitures/autocomplete", {
+                    params: { search: this.query },
                 })
                 .then((response) => {
                     this.suggestions = response.data;
@@ -48,14 +48,10 @@ export default {
                 });
         },
         selectSuggestion(suggestion) {
-            this.query = suggestion.title; // Remplir l'input avec la suggestion sélectionnée
-            this.suggestions = []; // Vider les suggestions
-            // Ajouter une action comme la redirection ou autre
-            console.log("Selected:", suggestion);
-            this.$router.push({
-                // À compléter: afficher les détails de la donnée séléctionnée.
-            });
-        },
+            this.query = suggestion.label;
+            this.suggestions = [];
+            this.$router.push({ name: 'voiture', params: { id: suggestion.value } });
+        }
     },
 };
 </script>
@@ -80,7 +76,7 @@ ul {
     border: 1px solid #ccc;
     border-radius: 4px;
     position: absolute;
-    background: rgb(11, 113, 230);
+    background: rgb(255, 255, 255);
     width: 100%;
     max-height: 200px;
     overflow-y: auto;
@@ -90,6 +86,7 @@ ul {
 li {
     padding: 8px;
     cursor: pointer;
+    color: black;
 }
 
 li:hover {

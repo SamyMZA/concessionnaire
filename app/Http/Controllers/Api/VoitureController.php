@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
-use App\Http\Controllers\Controller;
 use App\Models\Voiture;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class VoitureController extends Controller
 {
@@ -19,7 +19,7 @@ class VoitureController extends Controller
     public function index()
     {
         $voitures = Voiture::all();
-        return view("voitures.index", compact("voitures"));
+        return response()->json($voitures, 200);
     }
 
     /**
@@ -30,28 +30,33 @@ class VoitureController extends Controller
      */
     public function store(Request $request)
     {
-        $voiture = $request->all();
-
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'marque' => 'required',
             'modele' => 'required',
             'prix' => 'required',
-            'img'=> 'required|image',
+            'img'=> 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
 
-        if ($voiture = $request ->file('img')){
-            $image = $request->img;
-            $fileName = time().'.'.$image->getClientOriginalExtension();
-            $path = $image->move('images/upload', $fileName,'public');
+        if ($validator->fails()) {
+            return response() ->json(['success' => false, 'message' => $validator->errors()], 400);
         }
 
-            $voiture = Voiture::create([
-                'marque'=> $request->input('marque'),
-                'modele'=> $request->input('modele'),
-                'prix'=> $request->input('prix'),
-                'img'=> $fileName, 
-            ]);       
-            return response()->json([$voiture, "message" => "Voiture ajouté"], 201);
+        if ($request->file('img')->isValid()){
+            $image = $request->file('img');
+            $fileName = time().'.'.$image->getClientOriginalExtension();
+            $path = $image->storeAs('images/upload', $fileName,'public');
+        }
+
+        
+        $voiture = Voiture::create([
+            'marque'=> $request->input('marque'),
+            'modele'=> $request->input('modele'),
+            'prix'=> $request->input('prix'),
+            'img'=> $fileName, 
+        ]);       
+        return response()->json($voiture, 200);
+
+    
     }
 
     /**
@@ -62,9 +67,8 @@ class VoitureController extends Controller
      */
     public function show($id)
     {
-       //$voiture = Voiture::findOrFail($id);
-        //return view('voitures.show', compact('voiture'));
-        return Voiture::find($id);
+        $voiture = Voiture::findOrFail($id);
+        return response()->json($voiture, 200);
     }
 
     /**
@@ -84,7 +88,7 @@ class VoitureController extends Controller
             'marque' => 'required',
             'modele' => 'required',
             'prix' => 'required',
-            'img'=> 'required|image',
+            'img'=> 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
 
         if ($validator->fails()) {
@@ -95,6 +99,11 @@ class VoitureController extends Controller
         if ($request->file('img')->isValid()){
 
             $destination = 'storage/images/upload/'.$voiture->img;
+
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
             
             $image = $request->file('img');
             $fileName = time().'.'.$image->getClientOriginalExtension();
@@ -134,9 +143,21 @@ class VoitureController extends Controller
         
     }
 
+
     public function autocomplete(Request $request){
-        $query = $request->input('query');
-        $voitures = Voiture::where('marque', 'LIKE', "%{$query}%")->limit(10)->get();
-        return response()->json($voitures);
+        $search = $request->search;
+        $voitures = Voiture::orderBy('marque','asc')
+            ->select('id','marque')
+            ->where('marque','LIKE', '%'.$search. '%')
+            ->get();
+            $reponse = array();
+            foreach($voitures as $voiture){
+                $reponse[] = array(
+                    'value'=> $voiture->id,
+                    'label'=> $voiture->marque
+                );
+            }
+        return response()->json($reponse);
     }
+
 }

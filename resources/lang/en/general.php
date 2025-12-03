@@ -32,7 +32,8 @@ return [
     'accueil ac' => 'Home',
     'espace admin' => 'Admin Space',
     'A propos' => 'general about',
-    'Monopage' => 'general monopage'
+    'Monopage' => 'general monopage',
+    'Annuler' => 'cancel'
 
     
 ];

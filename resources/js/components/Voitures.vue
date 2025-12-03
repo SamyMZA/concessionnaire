@@ -4,6 +4,11 @@
         <br />
 
         <!-- Version alternative : toujours visible, redirige vers login si non connecté -->
+
+        <router-link v-if="isLoggedIn" :to="{ name: 'addvoiture' }" class="btn btn-primary">
+            Ajouter
+        </router-link>
+
         <button v-else @click="goAdd" class="btn btn-primary">Ajouter</button>
 
         <table class="table table-bordered mt-3">
@@ -12,6 +17,7 @@
                     <th scope="col" class="text-center">Image</th>
                     <th scope="col" class="text-center">Marque</th>
                     <th scope="col" class="text-center">Modele</th>
+                    <th scope="col" class="text-center">Prix</th>
                     <th scope="col" class="text-center">Actions</th>
                 </tr>
             </thead>
@@ -21,7 +27,9 @@
                         <div v-if="voiture.img">
                             <img
                                 class="img-thumbnail"
-                                :src="'/images/upload/' + voiture.img"
+                                :src="'/storage/images/upload/' + voiture.img"
+                                width="300px"
+                                height="200px"
                             />
                         </div>
                     </td>
@@ -30,6 +38,9 @@
                     </td>
                     <td style="text-align: center; vertical-align: middle">
                         {{ voiture.modele }}
+                    </td>
+                    <td style="text-align: center; vertical-align: middle">
+                        {{ voiture.prix }} $
                     </td>
                     <td>
                         <div style="text-align: center; vertical-align: middle">
@@ -56,6 +67,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
@@ -65,11 +77,12 @@ export default {
     },
     created() {
         this.checkLoginStatus(); // Vérification de la connexion dès la création du composant
-        // Chargement des articles
+        // Chargement des voitures
         axios
             .get("/api/voitures")
             .then((response) => {
                 this.voitures = response.data;
+                console.log(this.voitures);    // doit montrer exactement ton tableau de 1 objet
             })
             .catch((error) => {
                 console.error(error);
@@ -90,7 +103,7 @@ export default {
             }
         },
 
-        /*  goAdd() {
+        goAdd() {
              // Si pas connecté -> redirection vers la page de login
              if (!this.isLoggedIn) {
                  // Utilise le nom de route 'login' si tu l'as défini, sinon chemin '/login'
@@ -99,7 +112,7 @@ export default {
              }
              // sinon rediriger vers addvoiture (nom de route)
              this.$router.push({ name: 'addvoiture' }).catch(() => { this.$router.push('/add') });
-         }, */
+         }, 
 
         checkAuthBeforeDelete(id) {
             if (!this.isLoggedIn) {
@@ -108,38 +121,35 @@ export default {
                     this.$router.push("/login");
                 });
             } else {
-                this.deleteArticle(id);
+                this.deleteVoiture(id);
             }
         },
 
-        deleteArticle(id) {
-            if (!confirm("Voulez vous vraiment supprimer cette voiture ?")) {
+        deleteVoiture(id) {
+            if (!confirm("Are you sure to delete this voiture ?")) {
                 return;
             }
             axios
-                .delete(`/api/voitures/${id}`)
+                .delete(`api/voitures/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
                 .then(() => {
+                    // Retirer l'voiture du tableau local après suppression
                     this.voitures = this.voitures.filter(
                         (voiture) => voiture.id !== id
                     );
                 })
                 .catch((error) => {
-                    console.error(
-                        "Erreur lors de la suppression de la voiture :",
-                        error
-                    );
+                    console.error("Erreur lors de la suppression de l'voiture :", error);
                     // si erreur 401/403 -> rediriger vers login
-                    if (
-                        error.response &&
-                        (error.response.status === 401 ||
-                            error.response.status === 403)
-                    ) {
-                        this.$router.push({ name: "login" }).catch(() => {
-                            this.$router.push("/login");
-                        });
+                    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+                        this.$router.push({ name: 'login' }).catch(() => { this.$router.push('/login') });
                     }
                 });
         },
+
     },
 };
 </script>

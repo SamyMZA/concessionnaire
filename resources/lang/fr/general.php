@@ -33,7 +33,7 @@ return [
     'espace admin' => 'Espace administrateur',
     'A propos' => 'À propos',
     'Monopage' => 'Monopage',
-
+    'Annuler' => 'Annuler'
 
 
 ];

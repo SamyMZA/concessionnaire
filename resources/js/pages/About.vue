@@ -29,11 +29,11 @@
                         envoyé. Une fois connectée, l'utilisateur à accès à
                         divers options: Ajouter une voiture, supprimer ou
                         modifier sa ou ses voitures après avoir cliquer sur
-                        celle-ci et voir la liste des acheteurs.
+                        celle-ci et voir la liste des acheteurs
                     </div>
                     <br />
                     <img
-                        src="{{asset('images/flag/img1.png')}}"
+                        src="{{asset('storage/upload/images/img1.png')}}"
                         width="450px"
                     />
                 </div>
@@ -43,5 +43,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+    name: "About",
+    data() {
+        return {
+            //
+        };
+    },
+    created() {},
+    methods: {},
+};
 </script>

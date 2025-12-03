@@ -8,15 +8,19 @@
         <br>
         <p>Samy Mizi Allaoua & Marshlee Ulysse</p>
         <br>
-        <p>420-5H6 MO Applications Web transactionnelles, Automne 2025</p>
+        <p>420-5H6 MO Applications Web transactionnelles. Automne 2023, Collège Montmorency</p>
         <br>
-        <p>Un utilisateur non connecté peux voire la liste des voitures disponibles. Pour pouvoir ajouter, supprimer, ou modifier une voiture, l'utilisateur va devoir se connecté ou se créer un compte
-          si ce n'est pas encore créer. En cliquant sur connexion, l'utilisateur va être diriger soi à la page de connexion s'il ou elle a un compte ou la page de création de compte. Pour se créer un compte
-          l'utilisateur doit fournir un nom, un mot de passe (et le confirmer), un email et répondre au captcha. Une fois fait, l'utilisateur sera invité à confirmer la création du compte à travers un courriel
-          envoyé. Une fois connectée, l'utilisateur à accès à divers options: Ajouter une voiture, supprimer ou modifier sa ou ses voitures après avoir cliquer sur celle-ci et voir la liste des acheteurs.
+        <p>Les actions de bases que nous pouvons faire sont ajouter une voiture, acheter une voiture, visioner les informations sur une voiture spécifique et
+            voir une liste de tous les achats déjà effectués. Un utilisateur qui n'est pas connecté ne peut seulement voir la liste des voitures, les informations
+            sur une voiture spécifique et voir la liste des acheteurs (avec succès). Seulement admin peut ajouter une voiture et modifier ou supprimer la voiture
+            créée (succès). Un utilisateur peut s'inscrire au site (résultat mixe) ou se connecté s'il possède déjà un compte (mixe). Toutes utilisateurs peuvent changer
+            la langue du site et ce sur n'importe quel page actuel (succès). L'utilisateur peut utiliser la barre de recherche pour vérifier si une voiture existe
+            en recherchant le nom de la marque sur la page d'acceuil(succès).
         </p>
         <br>
-        <img src="{{asset('images/flag/img1.png')}}" width="450px">
+        <p>Insipier de nous meme :D</p>
+        <br>
+        <img src="{{asset('images/img1.png')}}" width="450px">
     </div>
 </div>
 @endsection

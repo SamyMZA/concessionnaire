@@ -2,26 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
+use App\Models\User;
+use Illuminate\Auth\Events\Logout;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-     /**
-
-     * Register api
-
-     *
-
-     * @return \Illuminate\Http\Response
-
-     */
-
-     public function register(Request $request)
+public function register(Request $request)
 
      {
  
@@ -81,9 +72,6 @@ class RegisterController extends Controller
         // $success['id'] =  $user->id;  la réponse lors de l'enregistrement peut aussi être l'id et le token
  
      }
- 
-    
- 
      /**
  
       * Login api
@@ -117,4 +105,28 @@ class RegisterController extends Controller
          } 
  
      }
+
+    public function logout(Request $request)
+    {
+        $user = $request->user(); // ou Auth::user()
+
+        if ($user) {
+            // Supprime tous les tokens API
+            $user->tokens()->delete();
+
+            // **Ne pas appeler Auth::logout() ici !**
+            return response()->json([
+                'success' => true,
+                'message' => 'User logged out successfully.'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Logout failed. User not authenticated.'
+        ], 401);
+    }
+
+
+
 }

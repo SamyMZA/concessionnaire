@@ -14,6 +14,6 @@ class Utilisateur extends Model
     ];
 
     public function achats(){
-        return $this->hasMany(Achat::class, 'id_utilisateur');
+        // return $this->hasMany(Achat::class, 'id_utilisateur');
     }
 }

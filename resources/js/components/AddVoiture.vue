@@ -38,12 +38,26 @@
 
             <div class="mb-3">
                 <label class="form-label">Image :</label>
+                <div
+                    class="dropzone p-4 border border-dashed text-center"
+                    @dragover.prevent
+                    @drop.prevent="onDrop"
+                    @click="triggerFileInput"
+                >
+                    <p v-if="!voiture.img">Glissez votre image ici ou cliquez pour sélectionner</p>
+                    <p v-else>{{ voiture.img.name }}</p>
+                    <input type="file" @change="onFileChange" class="d-none" ref="fileInput" />
+                </div>
+            </div>
+
+            <!-- <div class="mb-3">
+                <label class="form-label">Image :</label>
                 <input
                     type="file"
                     class="form-control"
                     @change="onFileChange"
                 />
-            </div>
+            </div> -->
 
             <button type="submit" class="btn btn-primary" :disabled="loading">
                 {{ loading ? "Envoi en cours..." : "Enregistrer" }}
@@ -54,6 +68,22 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const fileInput = ref(null);
+
+function onDrop(e) {
+    const files = e.dataTransfer.files;
+    if (files.length) {
+        voiture.value.img = files[0];
+    }
+}
+
+function triggerFileInput() {
+    fileInput.value.click();
+}
 
 const voiture = ref({
     marque: "",
@@ -78,7 +108,7 @@ async function addVoiture() {
 
         if (!token) {
             alert("Veuillez vous connecter d'abord.");
-            return this.$router.push("/login");
+            return router.push("/login");
         }
         // Préparer les données
         const formData = new FormData();
@@ -89,7 +119,7 @@ async function addVoiture() {
         if (voiture.value.img) formData.append("img", voiture.value.img);
 
         // Envoi de la voiture
-        const response = await axios.post("/api/voitures", formData, {
+        const response = await axios.post("api/voitures", formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "multipart/form-data",

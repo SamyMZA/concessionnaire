@@ -4,55 +4,39 @@
         <div
             class="text-center"
             style="
-                margin: 20px 0px 20px 0px;
-                background-color: #2769b0;
+                margin: 0px 0px 0px 0px;
+                background-color: black;
                 color: #ffff;
             "
         >
-            <h2>Site monopage Laravel-Vue avec authentification</h2>
+            <h2>Concessionnaire</h2>
         </div>
         <nav
             class="navbar navbar-expand-lg navbar-light bg-light"
-            style="background-color: #3485dc; color: #ffff"
+            style="background-color: black; color: #ffff"
         >
             <div
                 class="collapse navbar-collapse"
-                style="background-color: #3485dc; color: #ffff"
+                style="background-color: #ffff; color: #ffff"
             >
-                <!-- for logged-in user-->
-                <div
-                    class="navbar-nav"
-                    v-if="isLoggedIn"
-                    style="background-color: #3485dc; color: #ffff"
-                >
-                    <router-link to="/dashboard" class="nav-item nav-link"
-                        >Dashboard</router-link
-                    >
-                    <router-link to="/voitures" class="nav-item nav-link"
-                        >Voitures</router-link
-                    >
-                    <a
-                        class="nav-item nav-link"
-                        style="cursor: pointer"
-                        @click="logout"
-                        >Logout</a
-                    >
+                                <!-- for logged-in user-->
+                <div class="navbar-nav" v-if="isLoggedIn" style="background-color: #FFFF; color: #FFFF;">
+                    <router-link to="/" class="nav-item nav-link">Acceuil</router-link>
+                    <router-link to="/dashboard" class="nav-item nav-link">Dashboard</router-link>
+                    <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
+                    <router-link to="/about" class="nav-item nav-link">À propos</router-link>
+
+                    <a class="nav-item nav-link" style="cursor: pointer;" @click="logout">Déconnexion</a>
                 </div>
                 <!-- for non-logged user-->
-                <div
-                    class="navbar-nav"
-                    v-else
-                    style="background-color: #3485dc; color: #ffff"
-                >
-                    <router-link to="/" class="nav-item nav-link"
-                        >Home</router-link
-                    >
-                    <router-link to="/voitures" class="nav-item nav-link"
-                        >Voitures</router-link
-                    >
-                    <!--   <router-link to="/about" class="nav-item nav-link">About</router-link>
-                    <router-link to="/login" class="nav-item nav-link">login</router-link>
-                    <router-link to="/register" class="nav-item nav-link">Register </router-link> -->
+                <div class="navbar-nav" v-else style="background-color: #FFFF; color: #FFFF;">
+                    <router-link to="/" class="nav-item nav-link">Acceuil</router-link>
+                    <router-link to="/voitures" class="nav-item nav-link">Voitures</router-link>
+                    <router-link to="/about" class="nav-item nav-link">À propos</router-link>
+
+                    <router-link to="/login" class="nav-item nav-link">Connexion</router-link>
+                    <router-link to="/register" class="nav-item nav-link">Inscription</router-link>
+
                 </div>
             </div>
             <div>
@@ -73,44 +57,52 @@
 </template>
 
 <script>
+
+import SearchBar from './pages/SearchBar.vue';
+
 export default {
     name: "App",
+    components: {
+        SearchBar,
+    },
+    name: "App",
     data() {
+
         return {
+
             isLoggedIn: false,
-        };
+        }
     },
     created() {
         if (window.Laravel.isLoggedin) {
-            this.isLoggedIn = true;
+            this.isLoggedIn = true
         }
     },
     methods: {
         logout(e) {
-            console.log("ss");
-            e.preventDefault();
-            this.$axios.get("/sanctum/csrf-cookie").then((response) => {
-                this.$axios
-                    .post("/api/logout")
-                    .then((response) => {
+            console.log('ss')
+            e.preventDefault()
+            this.$axios.get('/sanctum/csrf-cookie').then(response => {
+                this.$axios.post('/logout')
+                    .then(response => {
                         if (response.data.success) {
-                            window.location.href = "/voitures";
+                            window.location.href = "/"
                         } else {
-                            console.log(response);
+                            console.log(response)
                         }
                     })
                     .catch(function (error) {
                         console.error(error);
                     });
-            });
-        },
+            })
+        }
     },
-};
+}
 </script>
 
 <style scoped>
 .footer {
-    background-color: #08539d;
+    background-color: #000000;
     padding: 20px;
     color: rgb(255, 255, 255);
     text-align: center;

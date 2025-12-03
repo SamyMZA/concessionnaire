@@ -32,6 +32,7 @@ return [
     'accueil ac' => 'Inicio','espace admin' => 'Espacio de administrador',
     'A propos' => 'Acerca de',
     'Monopage' => 'Página única',
+    'Annuler' => 'Cancelar'
 
 
 
