@@ -38,9 +38,13 @@ public function register(Request $request)
  
          }
 
-         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [  'secret' => env('RECAPTCHA_SECRET_KEY'),
-            'response' => $request->input('g-recaptcha-response')
-        ]);
+          $response = Http::withoutVerifying()->asForm()
+            ->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret' => env('RECAPTCHA_SECRET_KEY'),
+                'response' => $request->input('g-recaptcha-response'),
+
+            ]);
+
 
 
         $captcha = $response->json();
@@ -125,6 +129,18 @@ public function register(Request $request)
             'success' => false,
             'message' => 'Logout failed. User not authenticated.'
         ], 401);
+    }
+
+
+
+
+    protected function sendError($message, $errors = [], $code = 400)
+    {
+        return response()->json([
+            'success' => false,
+            'message' => $message,
+            'errors' => $errors
+        ], $code);
     }
 
 
